@@ -1,20 +1,23 @@
 // make a function that generates a drop down select element for each Governor (.map)
 
-import { getGovernors } from "./database.js";
+import { getGovernors, setColony } from "./database.js";
 
 const governors = getGovernors()
 
-// event listener below to be added later
-// document.addEventListener(
-//     "change",
-//     (changeEvent) => {
-//         if (changeEvent.target.id === "resource") {
-//             setColony(parseInt(changeEvent.target.value))
-//         }
-//     }
-// )
+// event listener sets colony id for transient state object based on governor selected
+document.addEventListener(
+    "change",
+    (changeEvent) => {
+        if (changeEvent.target.id === "resource") {
+                for (const governor of governors) {
+                    if (parseInt(changeEvent.target.value) === governor.id){
+                        setColony(governor.colonyId)
+                    }
+                }
+        }
+})
  
-
+// governors function provides html for gov options in dropdown format
 export const Governors = () => {
     let html = ""
 
