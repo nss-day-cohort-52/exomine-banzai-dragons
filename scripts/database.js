@@ -163,8 +163,19 @@ export const purchaseMineral = () => {
         const lastIndex = database.colonyMinerals.length - 1
         newPurchase.id = database.colonyMinerals[lastIndex].id + 1
     }
+        // Add a timestamp to the order
+        newPurchase.timestamp = Date.now()
+
+        // Add the new order object to custom orders state
+        database.colonyMinerals.push(newPurchase)
+    
+        // Reset the temporary state for user choices
+        database.transientState = {}
+    
+        // Broadcast a notification that permanent state has changed
+        document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
-export const getGovernors = () => {
-    return database.governors.map(governor => ({...governor}))
-}
+// export const getGovernors = () => {
+//     return database.governors.map(governor => ({...governor}))
+// }
