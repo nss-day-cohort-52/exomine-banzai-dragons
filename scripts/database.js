@@ -163,6 +163,7 @@ export const purchaseMineral = () => {
         const lastIndex = database.colonyMinerals.length - 1
         newPurchase.id = database.colonyMinerals[lastIndex].id + 1
     }
+}
 
 export const getGovernors = () => {
     return database.governors.map(governor => ({...governor}))
