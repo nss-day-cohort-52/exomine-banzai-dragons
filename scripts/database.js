@@ -118,18 +118,61 @@ const database = {
     transientState: {}
 }
 
-export const setFacility = (facilityId) => {
-    database.transientState.selectedFacility = facilityId
-    document.dispatchEvent( new CustomEvent("stateChanged") )
+// GET FUNCTIONS
+export const getGovernors = () => {
+    return database.governors.map(f => ({...f}))
 }
-
+export const getColonies = () => {
+    return database.colonies.map(f => ({...f}))
+}
+export const getMinerals = () => {
+    return database.minerals.map(f => ({...f}))
+}
 export const getFacilities = () => {
     return database.facilities.map(f => ({...f}))
 }
+export const getFacilityMinerals = () => {
+    return database.facilityMinerals.map(f => ({...f}))
+}
+
+// SET FUNCTIONS
+export const setColony = (id) => {
+    database.transientState.colonyId = id
+    document.dispatchEvent( new CustomEvent("stateChanged") )
+}
+export const setMineral = (id) => {
+    database.transientState.mineralId = id
+    document.dispatchEvent( new CustomEvent("stateChanged") )
+}
+
+// export const setFacility = (id) => {
+//     database.transientState.selectedFacility = id
+//     document.dispatchEvent( new CustomEvent("stateChanged") )
+// }
+
+
 
 export const purchaseMineral = () => {
+    // Copy the current state of user choices
+    const newPurchase = {...database.transientState}
 
-        // Broadcast custom event to entire documement so that the
-        // application can re-render and update state
-        document.dispatchEvent( new CustomEvent("stateChanged") )
+    // Add a new primary key to the object
+    if (database.colonyMinerals.length === 0) {
+        newPurchase.id = 1
+    } else {
+        const lastIndex = database.colonyMinerals.length - 1
+        newPurchase.id = database.colonyMinerals[lastIndex].id + 1
     }
+
+    // Add a timestamp to the order
+    newPurchase.timestamp = Date.now()
+
+    // Add the new order object to colonyMinerals state
+    database.colonyMinerals.push(newPurchase)
+
+    // Reset the temporary state for user choices
+    database.transientState = {}
+
+    // Broadcast a notification that permanent state has changed
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+}
