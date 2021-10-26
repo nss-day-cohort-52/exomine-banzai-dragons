@@ -1,0 +1,1 @@
+// make a function that generates HTML that displays the current colony's mineral inventory (colony is dependent on the selected governor)
