@@ -112,6 +112,7 @@ const database = {
             id: 1,
             colonyId: 3,
             mineralId: 1,
+            // mineralName: "",
             ton: 6
         }
     ],
@@ -133,6 +134,12 @@ export const getFacilities = () => {
 }
 export const getFacilityMinerals = () => {
     return database.facilityMinerals.map(f => ({...f}))
+}
+export const getColonyMinerals = () => {
+    return database.colonyMinerals.map(m => ({...m}))
+}
+export const getTransState = () => {
+    return database.transientState
 }
 
 // SET FUNCTIONS

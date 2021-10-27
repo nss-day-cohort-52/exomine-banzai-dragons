@@ -1,4 +1,6 @@
+import { colonyMinerals } from "./ColonyMinerals.js"
 import { Governors } from "./Governors.js"
+import { getTransState } from "./database.js"
 
 export const Exomine = () => {
     return `
@@ -8,7 +10,7 @@ export const Exomine = () => {
             <div class = "section governor">
             <article>
                 <h2>Choose Governor</h2>
-                ${Governors()}
+                <div>${Governors()}</div>
             </article>
             <article class = "section facility">
                 <h2>Choose Facility</h2>
@@ -17,7 +19,7 @@ export const Exomine = () => {
             </div>
             <div class = "section colony-resources">
                 <h2>Available Resources for Colony</h2>
-            
+                ${colonyMinerals(getTransState())}
             </div>
         </section>
         <section id="bottom-section">
