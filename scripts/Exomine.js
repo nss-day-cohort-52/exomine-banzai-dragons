@@ -1,3 +1,4 @@
+import { Governors } from "./Governors.js"
 
 export const Exomine = () => {
     return `
@@ -7,7 +8,7 @@ export const Exomine = () => {
             <div class = "section governor">
             <article>
                 <h2>Choose Governor</h2>
-                
+                ${Governors()}
             </article>
             <article class = "section facility">
                 <h2>Choose Facility</h2>
@@ -26,7 +27,7 @@ export const Exomine = () => {
             </div>
             <div class ="section cart">
                 <h2>Cart</h2>
-
+            
             </div>
         </section>
     `
