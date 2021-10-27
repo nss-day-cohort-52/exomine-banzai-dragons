@@ -7,7 +7,7 @@ import { colonyMinerals } from "./ColonyMinerals.js"
 document.addEventListener(
     "click",
     (event) => {
-        if(event.target.id === "orderButton"){
+        if (event.target.id === "orderButton") {
             purchaseMineral()
         }
     }

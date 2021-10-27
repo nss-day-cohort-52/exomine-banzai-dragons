@@ -147,6 +147,9 @@ export const getFacilities = () => {
 export const getFacilityMinerals = () => {
     return database.facilityMinerals.map(f => ({...f}))
 }
+export const getColonyMinerals = () => {
+    return database.colonyMinerals.map(f => ({...f}))
+}
 export const getTransientState = () => {
     // find a method to return a COPY of the object
     let copyOfTransientState = Object.assign({}, database.transientState)
