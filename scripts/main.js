@@ -8,7 +8,14 @@ const renderAllHTML = () => {
 
 renderAllHTML()
 
-document.addEventListener("stateChanged", event => {
-    console.log("State of data has changed. Regenerating HTML...")
+
+document.addEventListener("permanentStateChanged", event => {
+    console.log("Permanent state has changed. Regenerating HTML...")
+    renderAllHTML()
+})
+
+document.addEventListener("transientStateChanged", event => {
+    console.log("Transient state has changed. Regenerating HTML...")
+    // NEED TO FIND A WAY TO ONLY RE-RENDER SPECIFIC HTML ELEMENTS WHEN THIS CustomEvent HAPPENS
     renderAllHTML()
 })
