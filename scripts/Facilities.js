@@ -1,7 +1,6 @@
 // make a function that generates a drop down select element for each Facility (.map)
 
-import { getFacilities, setFacility, setMineral } from "./database.js";
-import { FacilityMinerals } from "./FacilityMinerals.js";
+import { getFacilities } from "./database.js";
 
 const facilities = getFacilities()
 
