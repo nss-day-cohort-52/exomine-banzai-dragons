@@ -1,4 +1,15 @@
+import { Facilities } from "./Facilities.js"
 import { Governors } from "./Governors.js"
+import { purchaseMineral } from "./database.js"
+
+document.addEventListener(
+    "click",
+    (event) => {
+        if(event.target.id === "orderButton"){
+            purchaseMineral()
+        }
+    }
+)
 
 export const Exomine = () => {
     return `
@@ -12,7 +23,7 @@ export const Exomine = () => {
             </article>
             <article class = "section facility">
                 <h2>Choose Facility</h2>
-                
+                ${Facilities()}
             </article>
             </div>
             <div class = "section colony-resources">
@@ -27,7 +38,10 @@ export const Exomine = () => {
             </div>
             <div class ="section cart">
                 <h2>Cart</h2>
-            
+
+                <article class="button">
+                    <button id="orderButton"> Purchase Minerals </button>
+                </article>
             </div>
         </section>
     `
