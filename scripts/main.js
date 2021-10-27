@@ -6,4 +6,12 @@ const renderAllHTML = () => {
     mainContainer.innerHTML = Exomine()
 }
 
+
 renderAllHTML()
+
+document.addEventListener("stateChanged",
+    event => {
+        console.log("state changed, regenerating HTML...")
+        renderAllHTML()
+    }
+)

@@ -11,15 +11,15 @@ document.addEventListener(
     "change",
     (changeEvent) => {
         if (changeEvent.target.id === "resource") {
-                for (const governor of governors) {
-                    if (parseInt(changeEvent.target.value) === governor.id){
-                        setColony(governor.colonyId)
-                        colonyMinerals()
-                    }
+            for (const governor of governors) {
+                if (parseInt(changeEvent.target.value) === governor.id) {
+                    setColony(governor.colonyId)
+                    colonyMinerals()
                 }
+            }
         }
-})
- 
+    })
+
 // governors function provides html for gov options in dropdown format
 export const Governors = () => {
     let html = ""
