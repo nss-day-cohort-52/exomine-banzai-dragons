@@ -24,7 +24,7 @@ document.addEventListener(
 export const Governors = () => {
     let html = ""
 
-    html += `<select id="resource">
+    html += `<select id="governor">
     <option value="0">Prompt to select governor...</option>`
 
     for (const governor of governors) {
