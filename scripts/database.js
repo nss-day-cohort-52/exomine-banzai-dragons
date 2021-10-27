@@ -114,7 +114,19 @@ const database = {
             mineralId: 1,
             // mineralName: "",
             ton: 6
-        }
+        },
+        {
+            id: 2,
+            colonyId: 3,
+            mineralId: 2,
+            ton: 13
+        },
+        {
+            id: 3,
+            colonyId: 1,
+            mineralId: 2,
+            ton: 3
+        },
     ],
     transientState: {}
 }
@@ -139,6 +151,9 @@ export const getTransientState = () => {
     // find a method to return a COPY of the object
     let copyOfTransientState = Object.assign({}, database.transientState)
     return copyOfTransientState
+}
+export const getColonyMinerals = () => {
+    return database.colonyMinerals.map(m => ({...m}))
 }
 
 // SET FUNCTIONS

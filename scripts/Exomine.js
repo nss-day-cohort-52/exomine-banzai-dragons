@@ -2,6 +2,7 @@ import { Facilities } from "./Facilities.js"
 import { FacilityMinerals } from "./FacilityMinerals.js"
 import { Governors } from "./Governors.js"
 import { purchaseMineral } from "./database.js"
+import { colonyMinerals } from "./ColonyMinerals.js"
 
 document.addEventListener(
     "click",
@@ -30,7 +31,7 @@ export const Exomine = () => {
             </div>
             <div class = "section colony-resources">
                 <h2>Available Resources for Colony</h2>
-            
+                ${colonyMinerals()}
             </div>
         </section>
         <section id="bottom-section">
