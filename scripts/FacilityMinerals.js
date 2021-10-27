@@ -1,10 +1,14 @@
-import { getFacilities, getFacilityMinerals, getMinerals, setFacility } from "./database.js"
+import { getFacilities, getFacilityMinerals, getMinerals, setFacility, setMineral } from "./database.js"
 
+
+
+const facilities = getFacilities()
+const facilityMinerals = getFacilityMinerals()
+const minerals = getMinerals()
 
 let clickFacilityId = 0
 
-const facilities = getFacilities()
-
+// change event listener that listens for the facility drop down to be selected, uses setFacility() to set facilityId to our transientState
 document.addEventListener(
     "change",
     (changeEvent) => {
@@ -17,10 +21,22 @@ document.addEventListener(
             }
         }
     })
+    
+// change event listener that listens for a radio button to be selected, uses setMineral() to set mineralId to our transientState
+document.addEventListener(
+    "change", 
+    (changeEvent) => {
+        if (changeEvent.target.name === "facilityMinerals") {
+            for (const facilityMineralObj of facilityMinerals) {
+                if (parseInt(changeEvent.target.value) === facilityMineralObj.id) {
+                    setMineral(facilityMineralObj.mineralId)
+                }
+            }
+        }
+    }
+)
 
 const buildFacilityMineralsList = (facilityMineralObj) => {
-    const facilities = getFacilities()
-    const minerals = getMinerals()
 
     const foundFacility = facilities.find(
         facility => {
@@ -32,10 +48,11 @@ const buildFacilityMineralsList = (facilityMineralObj) => {
             return mineral.id === facilityMineralObj.mineralId
         }
     )
-
-    return `<li>
-            <input type="radio" name="facilityMinerals" value="${foundFacility.id}" /> ${facilityMineralObj.ton} tons of ${foundMineral.mineral} at ${foundFacility.facility}
+        if (foundFacility.id === facilityMineralObj.facilityId) {
+            return `<li>
+            <input type="radio" name="facilityMinerals" value="${facilityMineralObj.id}" /> ${facilityMineralObj.ton} tons of ${foundMineral.mineral} at ${foundFacility.facility}
             </li>`
+        }
 }
 export const FacilityMinerals = () => {
     const facilityMineralsArr = getFacilityMinerals()
