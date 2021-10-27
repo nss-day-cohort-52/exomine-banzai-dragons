@@ -19,12 +19,12 @@
 .colony-resources {
     width: 50%;
     text-align: center;
+    margin-right: 1%;
 }
 .section {
     border: 3px rgb(3, 3, 3) solid;
     border-radius: 15px;
 }
-/* This is the governor class section  */
 .governor {
     margin: 0px 2% 3% 2%;
     padding: 2% 0px 2% 2%;
@@ -42,4 +42,7 @@
     width: 30%;
     margin: 2% 1% 0px 1%;
     text-align: center;
+}
+li {
+    list-style: none;
 }

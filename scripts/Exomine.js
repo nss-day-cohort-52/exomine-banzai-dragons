@@ -40,7 +40,6 @@ export const Exomine = () => {
             </div>
             <div class ="section cart">
                 <h2>Cart</h2>
-
                 <article class="button">
                     <button id="orderButton"> Purchase Minerals </button>
                 </article>
