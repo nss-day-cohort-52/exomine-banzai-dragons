@@ -1,6 +1,19 @@
 import { Facilities } from "./Facilities.js"
+<<<<<<< HEAD
 import { FacilityMinerals } from "./FacilityMinerals.js"
+=======
+>>>>>>> 2dbd6613192e0289902da21b079de772772b973e
 import { Governors } from "./Governors.js"
+import { purchaseMineral } from "./database.js"
+
+document.addEventListener(
+    "click",
+    (event) => {
+        if(event.target.id === "orderButton"){
+            purchaseMineral()
+        }
+    }
+)
 
 export const Exomine = () => {
     return `
@@ -29,7 +42,10 @@ export const Exomine = () => {
             </div>
             <div class ="section cart">
                 <h2>Cart</h2>
-            
+
+                <article class="button">
+                    <button id="orderButton"> Purchase Minerals </button>
+                </article>
             </div>
         </section>
     `
