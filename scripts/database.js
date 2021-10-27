@@ -149,7 +149,6 @@ export const setMineral = (id) => {
     database.transientState.mineralId = id
     document.dispatchEvent( new CustomEvent("stateChanged") )
 }
-
 export const setFacility = (id) => {
     database.transientState.facilityId = id
     document.dispatchEvent( new CustomEvent("stateChanged") )

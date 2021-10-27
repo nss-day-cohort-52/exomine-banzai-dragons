@@ -1,8 +1,5 @@
 import { Facilities } from "./Facilities.js"
-<<<<<<< HEAD
 import { FacilityMinerals } from "./FacilityMinerals.js"
-=======
->>>>>>> 2dbd6613192e0289902da21b079de772772b973e
 import { Governors } from "./Governors.js"
 import { purchaseMineral } from "./database.js"
 
