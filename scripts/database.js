@@ -134,6 +134,11 @@ export const getFacilities = () => {
 export const getFacilityMinerals = () => {
     return database.facilityMinerals.map(f => ({...f}))
 }
+export const getTransientState = () => {
+    // find a method to return a COPY of the object
+    let copyOfTransientState = Object.assign({}, database.transientState)
+    return copyOfTransientState
+}
 
 // SET FUNCTIONS
 export const setColony = (id) => {
@@ -144,9 +149,8 @@ export const setMineral = (id) => {
     database.transientState.mineralId = id
     document.dispatchEvent( new CustomEvent("stateChanged") )
 }
-
 export const setFacility = (id) => {
-    database.transientState.selectedFacility = id
+    database.transientState.facilityId = id
     document.dispatchEvent( new CustomEvent("stateChanged") )
 }
 
@@ -176,6 +180,4 @@ export const purchaseMineral = () => {
         document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
-// export const getGovernors = () => {
-//     return database.governors.map(governor => ({...governor}))
-// }
+
