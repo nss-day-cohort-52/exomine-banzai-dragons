@@ -7,7 +7,7 @@ export const colonyMinerals = () => {
     const colonymins = getColonyMinerals()
     let html = ""
     for (const colmin of colonymins) {
-        html += `<li>${colmin.ton} tons of ${colmin.id}`
+        html += `<li>${colmin.ton} tons of ${colmin.id}</li>`
     }
 
     return html
@@ -23,7 +23,7 @@ export const colonyMinerals = () => {
 //     colonyMinerals.map(buildOrderListItem)
 
 //     html += listItems.join("")
-    
+
 //     html += "</ul>"
 
 //     return html

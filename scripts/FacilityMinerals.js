@@ -1,36 +1,54 @@
-import { getFacilities, getFacilityMinerals, setMineral} from "./database.js"
+import { getFacilities, getFacilityMinerals, getMinerals, setFacility } from "./database.js"
 
-// make a function that generates HTML that displays the current facility's mineral inventory (minerals listed is dependent on facility chosen from drop down)
-const facilityMineralsArr  = getFacilityMinerals()
-const facilitiesArr = getFacilities()
+
+let clickFacilityId = 0
+
+const facilities = getFacilities()
 
 document.addEventListener(
     "change",
     (changeEvent) => {
-        if (changeEvent.target.name === "facilityMinerals") {
-                for (const facilityMineralObj of facilityMineralsArr) {
-                    if (parseInt(changeEvent.target.value) === facilityMineralObj.id){
-                        setMineral(facilityMineralObj.mineralId)
-                    }
+        if (changeEvent.target.id === "facilityResource") {
+            clickFacilityId = parseInt(changeEvent.target.value)
+            for (const facility of facilities) {
+                if (parseInt(changeEvent.target.value) === facility.id) {
+                    setFacility(facility.id)
                 }
+            }
         }
-})
+    })
 
+const buildFacilityMineralsList = (facilityMineralObj) => {
+    const facilities = getFacilities()
+    const minerals = getMinerals()
+
+    const foundFacility = facilities.find(
+        facility => {
+            return facility.id === facilityMineralObj.facilityId
+        }
+    )
+    const foundMineral = minerals.find(
+        mineral => {
+            return mineral.id === facilityMineralObj.mineralId
+        }
+    )
+
+    return `<li>
+            <input type="radio" name="facilityMinerals" value="${foundFacility.id}" /> ${facilityMineralObj.ton} tons of ${foundMineral.mineral} at ${foundFacility.facility}
+            </li>`
+}
 export const FacilityMinerals = () => {
-    let html = "<ul>"
-    // This is how you have been converting objects to <li> elements
-    for (const facilityMineralObj of facilityMineralsArr) {
-        // for (const facilityObj of facilitiesArr) {
-        //     if (facilityMineralObj.facilityId === facilityObj.id) {
-                html += `<li>
-                    <input type="radio" name="facilityMinerals" value="${facilityMineralObj.id}" /> ${facilityMineralObj.ton} tons of ${facilityMineralObj.id}
-                </li>`
-        //     }
-        // }
+    const facilityMineralsArr = getFacilityMinerals()
+
+    let html = ""
+    if (clickFacilityId > 0) {
+        html = "<ul>"
+
+        const listItems = facilityMineralsArr.map(buildFacilityMineralsList)
+
+        html += listItems.join("")
+        html += "</ul>"
     }
-    html += "</ul>"
 
     return html
 }
-
-// make a function that generates HTML radio buttons for the user to select a certain mineral listed
