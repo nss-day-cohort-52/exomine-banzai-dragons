@@ -112,6 +112,7 @@ const database = {
             id: 1,
             colonyId: 3,
             mineralId: 1,
+            // mineralName: "",
             ton: 6
         }
     ],
