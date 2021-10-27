@@ -1,5 +1,5 @@
-
 import { Facilities } from "./Facilities.js"
+import { FacilityMinerals } from "./FacilityMinerals.js"
 import { Governors } from "./Governors.js"
 import { purchaseMineral } from "./database.js"
 
@@ -12,7 +12,6 @@ document.addEventListener(
     }
 )
 
-
 export const Exomine = () => {
     return `
     <i class="far fa-gem"></i>    
@@ -23,7 +22,7 @@ export const Exomine = () => {
             <article class="section governor">
                 <h3>Choose Governor</h3>
                 ${Governors()}
-          </article>
+            </article>
             <article class="section facility">
                 <h3>Choose Facility</h3>
                 ${Facilities()}
@@ -31,13 +30,13 @@ export const Exomine = () => {
             </div>
             <div class = "section colony-resources">
                 <h2>Available Resources for Colony</h2>
-                ${colonyMinerals(getTransState())}
+            
             </div>
         </section>
         <section id="bottom-section">
             <div class = "section minerals">
                 <h2>Minerals at Facility</h2>
-
+                ${FacilityMinerals()}
             </div>
             <div class ="section cart">
                 <h2>Cart</h2>
