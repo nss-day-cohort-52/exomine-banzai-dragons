@@ -1,9 +1,12 @@
-import { getFacilities, getFacilityMinerals, getMinerals, setFacility } from "./database.js"
+import { getFacilities, getFacilityMinerals, getMinerals, setFacility, setMineral } from "./database.js"
 
 
-let clickFacilityId = 0
 
 const facilities = getFacilities()
+const facilityMinerals = getFacilityMinerals()
+const minerals = getMinerals()
+
+let clickFacilityId = 0
 
 document.addEventListener(
     "change",
@@ -18,9 +21,20 @@ document.addEventListener(
         }
     })
 
+document.addEventListener(
+    "change", 
+    (changeEvent) => {
+        if (changeEvent.target.name === "facilityMinerals") {
+            for (const facilityMineralObj of facilityMinerals) {
+                if (parseInt(changeEvent.target.value) === facilityMineralObj.id) {
+                    setMineral(facilityMineralObj.mineralId)
+                }
+            }
+        }
+    }
+)
+
 const buildFacilityMineralsList = (facilityMineralObj) => {
-    const facilities = getFacilities()
-    const minerals = getMinerals()
 
     const foundFacility = facilities.find(
         facility => {
@@ -34,7 +48,7 @@ const buildFacilityMineralsList = (facilityMineralObj) => {
     )
 
     return `<li>
-            <input type="radio" name="facilityMinerals" value="${foundFacility.id}" /> ${facilityMineralObj.ton} tons of ${foundMineral.mineral} at ${foundFacility.facility}
+            <input type="radio" name="facilityMinerals" value="${foundMineral.id}" /> ${facilityMineralObj.ton} tons of ${foundMineral.mineral} at ${foundFacility.facility}
             </li>`
 }
 export const FacilityMinerals = () => {
