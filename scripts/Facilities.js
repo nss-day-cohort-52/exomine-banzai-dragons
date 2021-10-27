@@ -20,10 +20,12 @@ export const Facilities = () => {
             return `
             <select id="facility">
             <option value="${facility.id}">${facility.facility}</option>
-          </select>
-            `
+            </select>
+              `
         }
     )
     html += facilitiesArray.join("")
     return html
 }
+
+

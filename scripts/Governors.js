@@ -27,6 +27,6 @@ export const Governors = () => {
     for (const governor of governors) {
         html += `<option value="${governor.id}">${governor.name}</option>`
     }
-
+    html +=`</select>`
     return html
 }
