@@ -8,6 +8,7 @@ const minerals = getMinerals()
 
 let clickFacilityId = 0
 
+// change event listener that listens for the facility drop down to be selected, uses setFacility() to set facilityId to our transientState
 document.addEventListener(
     "change",
     (changeEvent) => {
@@ -20,7 +21,8 @@ document.addEventListener(
             }
         }
     })
-
+    
+// change event listener that listens for a radio button to be selected, uses setMineral() to set mineralId to our transientState
 document.addEventListener(
     "change", 
     (changeEvent) => {
@@ -46,10 +48,11 @@ const buildFacilityMineralsList = (facilityMineralObj) => {
             return mineral.id === facilityMineralObj.mineralId
         }
     )
-
-    return `<li>
-            <input type="radio" name="facilityMinerals" value="${foundMineral.id}" /> ${facilityMineralObj.ton} tons of ${foundMineral.mineral} at ${foundFacility.facility}
+        if (foundFacility.id === facilityMineralObj.facilityId) {
+            return `<li>
+            <input type="radio" name="facilityMinerals" value="${facilityMineralObj.id}" /> ${facilityMineralObj.ton} tons of ${foundMineral.mineral} at ${foundFacility.facility}
             </li>`
+        }
 }
 export const FacilityMinerals = () => {
     const facilityMineralsArr = getFacilityMinerals()
