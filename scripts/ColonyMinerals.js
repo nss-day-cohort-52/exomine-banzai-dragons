@@ -1,30 +1,53 @@
 // make a function that generates HTML that displays the current colony's mineral inventory (colony is dependent on the selected governor)
-import { getColonies, getGovernors, getMinerals, getColonyMinerals } from "./database.js"
+import { getColonies, getGovernors, getMinerals, getColonyMinerals, setColony } from "./database.js"
 
-// build a function for the html of the colony mineral section
-// i need to access the mineral name from minerals 
-export const colonyMinerals = () => {
-    const colonymins = getColonyMinerals()
+const governors = getGovernors()    
+let clickGovId = 0
+
+document.addEventListener(
+    "change",
+    (changeEvent) => {
+        if (changeEvent.target.id === "governor") {
+            clickGovId = parseInt(changeEvent.target.value)
+            for (const gov of governors) {
+                if (parseInt(changeEvent.target.value) === gov.id) {
+                    setColony(gov.colonyId) 
+                }
+            }
+        }  
+})
+
+// this function builds list items of minerals and tons purchased
+const buildOrderListItem = (purchase) => {
+    const minerals = getMinerals()
+    const foundGov = governors.find(
+        (gov) => {
+            return gov.colonyId === purchase.colonyId
+        }
+    )
+    
+    const foundMin = minerals.find(
+        (mineral) => {
+            return mineral.id === purchase.mineralId
+        }
+    )
+
+    return `<li>${purchase.ton} tons of ${foundMin.mineral}</li>`
+}
+
+export const colonyMinerals = () => {  
+    const colmins = getColonyMinerals()
     let html = ""
-    for (const colmin of colonymins) {
-        html += `<li>${colmin.ton} tons of ${colmin.id}</li>`
+
+    if (clickGovId > 0) {
+        html += "<ul>"
+        
+        const listItems = colmins.map(buildOrderListItem)
+
+        html += listItems.join("")
+        
+        html += "</ul>"
     }
 
     return html
 }
-
-// this function runs when the gov drop down menu gets selected 
-// export const colonyMinerals = () => {   
-//     const colonyMinerals = getColonyMinerals()
-//     const colonies = getColonies()
-
-//     let html = "<ul>"
-
-//     colonyMinerals.map(buildOrderListItem)
-
-//     html += listItems.join("")
-
-//     html += "</ul>"
-
-//     return html
-// }
