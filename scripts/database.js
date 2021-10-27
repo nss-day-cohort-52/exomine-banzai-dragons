@@ -155,9 +155,6 @@ export const getTransientState = () => {
     let copyOfTransientState = Object.assign({}, database.transientState)
     return copyOfTransientState
 }
-export const getColonyMinerals = () => {
-    return database.colonyMinerals.map(m => ({...m}))
-}
 
 // SET FUNCTIONS
 export const setColony = (id) => {
