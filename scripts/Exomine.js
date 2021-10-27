@@ -13,16 +13,17 @@ document.addEventListener(
 
 export const Exomine = () => {
     return `
-        <h1>Exomine</h1>
+    <i class="far fa-gem"></i>    
+    <h1 id="header">Exomine</h1>
 
         <section id = "top-section">
-            <div class = "section governor">
-            <article>
-                <h2>Choose Governor</h2>
+            <div class="govFacility">
+            <article class="section governor">
+                <h3>Choose Governor</h3>
                 ${Governors()}
             </article>
-            <article class = "section facility">
-                <h2>Choose Facility</h2>
+            <article class="section facility">
+                <h3>Choose Facility</h3>
                 ${Facilities()}
             </article>
             </div>
