@@ -1,13 +1,13 @@
 // make a function that generates a drop down select element for each Facility (.map)
 
-import { getFacilities, setFacility } from "./database.js";
+import { getFacilities } from "./database.js";
 
 const facilities = getFacilities() 
 
 document.addEventListener(
     "change",
     (event) => {
-        if (event.target.name === "facility") {
+        if (event.target.id === "facility") {
             setFacility(parseInt(event.target.value))
         }
     }
@@ -18,7 +18,7 @@ export const Facilities = () => {
     const facilitiesArray = facilities.map(
         (facility) => {
             return `
-            <select name="facility" id="facility">
+            <select id="facility">
             <option value="${facility.id}">${facility.facility}</option>
           </select>
             `
