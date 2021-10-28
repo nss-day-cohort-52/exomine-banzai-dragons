@@ -156,19 +156,18 @@ export const getTransientState = () => {
     return copyOfTransientState
 }
 
-
 // SET FUNCTIONS
 export const setColony = (id) => {
     database.transientState.colonyId = id
-    document.dispatchEvent( new CustomEvent("stateChanged") )
+    document.dispatchEvent( new CustomEvent("transientStateChanged") )
 }
 export const setMineral = (id) => {
     database.transientState.mineralId = id
-    document.dispatchEvent( new CustomEvent("stateChanged") )
+    document.dispatchEvent( new CustomEvent("transientStateChanged") )
 }
 export const setFacility = (id) => {
     database.transientState.facilityId = id
-    document.dispatchEvent( new CustomEvent("stateChanged") )
+    document.dispatchEvent( new CustomEvent("transientStateChanged") )
 }
 
 
@@ -194,7 +193,7 @@ export const purchaseMineral = () => {
         database.transientState = {}
     
         // Broadcast a notification that permanent state has changed
-        document.dispatchEvent(new CustomEvent("stateChanged"))
+        document.dispatchEvent(new CustomEvent("permanentStateChanged"))
 }
 
 

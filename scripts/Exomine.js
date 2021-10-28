@@ -6,6 +6,7 @@ import { colonyMinerals } from "./ColonyMinerals.js"
 import { SpaceCart } from "./cart.js"
 
 
+// This eventListner listens for when the user clicks the purchase button
 document.addEventListener(
     "click",
     (event) => {
@@ -14,7 +15,7 @@ document.addEventListener(
         }
     }
 )
-
+// The resposibility of this function is to return a the html content for our webpage as a string 
 export const Exomine = () => {
     return `
     <i class="far fa-gem"></i>    
