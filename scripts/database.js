@@ -112,7 +112,6 @@ const database = {
             id: 1,
             colonyId: 3,
             mineralId: 1,
-            // mineralName: "",
             ton: 6
         },
         {
@@ -127,6 +126,12 @@ const database = {
             mineralId: 2,
             ton: 3
         },
+        {
+            id: 4,
+            colonyId: 2,
+            mineralId: 3,
+            ton: 10
+        }
     ],
     transientState: {}
 }

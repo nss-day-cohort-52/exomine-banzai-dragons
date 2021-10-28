@@ -1,6 +1,19 @@
-import { getGovernors } from "./database.js";
+import { getGovernors, setColony } from "./database.js";
 
 const governors = getGovernors()
+
+document.addEventListener(
+    "change",
+    (changeEvent) => {
+        if (changeEvent.target.id === "governor") {
+            // clickGovId = parseInt(changeEvent.target.value)
+            for (const gov of governors) {
+                if (parseInt(changeEvent.target.value) === gov.id) {
+                    setColony(gov.colonyId) 
+                }
+            }
+        }  
+})
  
 // governors function provides html for gov options in dropdown format
 export const Governors = () => {
