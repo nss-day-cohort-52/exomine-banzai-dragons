@@ -12,7 +12,7 @@ const facilityMinerals = getFacilityMinerals()
 // Use the value of the radio button that gets selected. 
 
 // Click event listener that listens for when a certain radio button in the facility minerals array gets selected and generates HTML with a space cart function. Does each of the input buttons listed in the facility minerals have a unique identifier?
-let clickedFacilityId = 0
+let clickedFacilityId = null
 document.addEventListener(
     "change",
     (changeEvent) => {
@@ -23,7 +23,7 @@ document.addEventListener(
 )
 
 export const SpaceCart = () => {
-    if (clickedFacilityId > 0) {
+    if (clickedFacilityId) {
         const transientState = getTransientState()
         const foundFacility = facilities.find(facility => {
                 return facility.id === transientState.facilityId
