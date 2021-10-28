@@ -1,11 +1,10 @@
-import { getFacilities, getFacilityMinerals } from "./database.js"
+import { getFacilities } from "./database.js"
 import { getMinerals, getTransientState } from "./database.js"
 
 
 // The responsibility of this module is to display the selected input value from the Minerals at Facility to the Cart section. 
 const facilities = getFacilities()
 const minerals = getMinerals()
-const facilityMinerals = getFacilityMinerals()
 
 // Write a function that displays in HTML the values stored in the transient state object. 
 
@@ -13,6 +12,7 @@ const facilityMinerals = getFacilityMinerals()
 
 // Click event listener that listens for when a certain radio button in the facility minerals array gets selected and generates HTML with a space cart function. Does each of the input buttons listed in the facility minerals have a unique identifier?
 let clickedFacilityId = null
+
 document.addEventListener(
     "change",
     (changeEvent) => {
