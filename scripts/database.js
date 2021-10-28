@@ -174,8 +174,22 @@ export const setFacility = (id) => {
     database.transientState.facilityId = id
     document.dispatchEvent( new CustomEvent("transientStateChanged") )
 }
-
-
+export const incrementCM = (id) => {
+    const colonyMinerals = getColonyMinerals()
+    const foundColonyMin = colonyMinerals.find((colonyMineral) => {
+        return colonyMineral.id === id
+    })
+    foundColonyMin.ton += 1
+    document.dispatchEvent(new CustomEvent("permanentStateChanged"))
+}
+export const decrementFM = (id) => {
+    const facilityMinerals = getFacilityMinerals()
+    const foundFacilityMin = facilityMinerals.find((facilityMineral) => {
+        return facilityMineral.id === id
+    })
+    foundFacilityMin.ton += 1
+    document.dispatchEvent(new CustomEvent("permanentStateChanged"))
+}
 
 export const purchaseMineral = () => {
     // Copy the current state of user choices

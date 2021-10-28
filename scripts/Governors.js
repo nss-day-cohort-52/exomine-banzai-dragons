@@ -2,11 +2,11 @@ import { getGovernors, setColony } from "./database.js";
 
 const governors = getGovernors()
 
+// event listener for gov dropdown selection
 document.addEventListener(
     "change",
     (changeEvent) => {
         if (changeEvent.target.id === "governor") {
-            // clickGovId = parseInt(changeEvent.target.value)
             for (const gov of governors) {
                 if (parseInt(changeEvent.target.value) === gov.id) {
                     setColony(gov.colonyId) 
@@ -23,6 +23,7 @@ export const Governors = () => {
     <option value="0">Prompt to select governor...</option>`
 
     for (const governor of governors) {
+        // if (governor.active === true) {}
         html += `<option value="${governor.id}">${governor.name}</option>`
     }
 

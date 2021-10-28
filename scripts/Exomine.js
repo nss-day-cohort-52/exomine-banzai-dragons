@@ -1,16 +1,18 @@
 import { Facilities } from "./Facilities.js"
-import { FacilityMinerals } from "./FacilityMinerals.js"
+import { FacilityMinerals, saveMineral } from "./FacilityMinerals.js"
 import { Governors } from "./Governors.js"
-import { purchaseMineral } from "./database.js"
+import { decrementFM, getTransientState, incrementCM, purchaseMineral } from "./database.js"
 import { colonyMinerals } from "./ColonyMinerals.js"
-import {SpaceCart} from "./cart.js"
+import { SpaceCart } from "./cart.js"
 
-
+let savedMinId = saveMineral()
 // This eventListner listens for when the user clicks the purchase button
 document.addEventListener(
     "click",
     (event) => {
         if (event.target.id === "orderButton") {
+            decrementFM(savedMinId)
+            incrementCM()
             purchaseMineral()
         }
     }

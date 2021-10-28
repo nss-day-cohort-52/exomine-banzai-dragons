@@ -41,10 +41,19 @@ export const SpaceCart = () => {
     }
 }
 
+document.addEventListener(
+    "click",
+    (event) => {
+        if (event.target.id === "orderButton") {
+            clickedFacilityId = 0
+        }
+    }
+)
+
 
 
 // Need a function that activates once the event listener finds a click event so that it responds with a string interpolation of one mineral from which facility. 
-const buildShoppingCart = (facilityMineralObj) => {
+// const buildShoppingCart = (facilityMineralObj) => {
     // Here we are using the .find array method to iterate through the facilities array and return the first facility object that meets the condition set within the function body 
     // Store the value of the .find method in a variable 
     
@@ -53,9 +62,8 @@ const buildShoppingCart = (facilityMineralObj) => {
         
         
         // IF the object stored in our foundFacility variable has an id propery that is strictly equal to the facilityId property on the object that is passed into the fuction as an argument...
-        if (foundFacility.id === facilityMineralObj.facilityId) {
+        // if (foundFacility.id === facilityMineralObj.facilityId) {
             // We will return a string of html (a radio button enclosed in a list element) that is interpolated with the values of object properties
-            return `<p>1 ton of ${foundMineral.mineral} at ${foundFacility.facility}</p>`
-        }
-    }
-    
+    //         return `<p>1 ton of ${foundMineral.mineral} at ${foundFacility.facility}</p>`
+    //     }
+    // }
