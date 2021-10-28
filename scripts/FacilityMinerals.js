@@ -44,7 +44,7 @@ const buildFacilityMineralsList = (facilityMineralObj) => {
         }
     )
     // IF the object stored in our foundFacility variable has an id propery that is strictly equal to the facilityId property on the object that is passed into the fuction as an argument...
-    if (foundFacility.id === facilityMineralObj.facilityId) {
+    if (foundFacility.id === facilityMineralObj.facilityId && foundMineral.id === facilityMineralObj.mineralId) {
         // We will return a string of html (a radio button enclosed in a list element) that is interpolated with the values of object properties
         return `<li>
             <input type="radio" name="facilityMinerals" value="${facilityMineralObj.id}" /> ${facilityMineralObj.ton} tons of ${foundMineral.mineral} at ${foundFacility.facility}
