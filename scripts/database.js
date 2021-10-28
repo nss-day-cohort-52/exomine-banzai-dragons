@@ -3,22 +3,26 @@ const database = {
         {
             id: 1,
             name: "Alex Lewis",
-            colonyId: 1
+            colonyId: 1,
+            active: true
         },
         {
             id: 2,
             name: "Laci Zeidler",
-            colonyId: 3
+            colonyId: 3,
+            active: true
         },
         {
             id: 3,
             name: "Ashley Dickey",
-            colonyId: 2
+            colonyId: 2,
+            active: true
         },
         {
             id: 4,
             name: "Bob Bobberson",
-            colonyId: 3
+            colonyId: 3,
+            active: false
         }
     ],
     colonies: [
@@ -52,15 +56,18 @@ const database = {
     facilities: [
         {
             id: 1,
-            facility: "Red Hawk"
+            facility: "Red Hawk",
+            active: true
         },
         {
             id: 2,
-            facility: "Leadville"
+            facility: "Leadville",
+            active: true
         },
         {
             id: 3,
-            facility: "Keane Wonder"
+            facility: "Keane Wonder",
+            active: false
         }
     ],
     facilityMinerals:[
