@@ -33,7 +33,9 @@ export const Facilities = () => {
     <option value="0">Prompt to select facility...</option>`
 
     for (const facility of facilities) {
-        html += `<option value="${facility.id}">${facility.facility}</option>`
+        if (facility.active === true) {
+            html += `<option value="${facility.id}">${facility.facility}</option>`
+        }
     }
     html += `</select>`
     return html
