@@ -3,6 +3,8 @@ import { FacilityMinerals } from "./FacilityMinerals.js"
 import { Governors } from "./Governors.js"
 import { purchaseMineral } from "./database.js"
 import { colonyMinerals } from "./ColonyMinerals.js"
+import {SpaceCart} from "./cart.js"
+
 
 // This eventListner listens for when the user clicks the purchase button
 document.addEventListener(
@@ -42,7 +44,7 @@ export const Exomine = () => {
             </div>
             <div class ="section cart">
                 <h2>Cart</h2>
-
+                ${SpaceCart()}
                 <article class="button">
                     <button id="orderButton"> Purchase Minerals </button>
                 </article>

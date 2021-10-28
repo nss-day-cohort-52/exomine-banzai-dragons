@@ -1,7 +1,9 @@
 import { Exomine } from "./Exomine.js";
 
+// Stores the querySelector in a variable that looks for the container id in the html. 
 const mainContainer = document.querySelector(".container")
 
+// Function that tells the Exomine function where to keep the HTML interpolation on the browser. 
 const renderAllHTML = () => {
     mainContainer.innerHTML = Exomine()
 }
