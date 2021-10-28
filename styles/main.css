@@ -6,9 +6,21 @@
 li {
     list-style: none;
 }
+body {
+    background-color: #F6EEDF;
+}
+#orderButton {
+    background-color: #6A492B;
+    color: #F6EEDF;
+    padding: 2%;
+    margin: 5% 0px;
+    font-size: 15px;
+}
 #header {
-    margin-left: 2%;
-    margin-top: 2%;
+    padding: 2%;
+    background-color: #6A492B;;
+    margin-bottom: 2%;
+    color: #F6EEDF;
 }
 #top-section {
     display: flex;
@@ -22,27 +34,52 @@ li {
 .colony-resources {
     width: 50%;
     text-align: center;
+    margin-right: 1%;
+    color: #6A492B;
+    font-size: 18px;
+}
+.colony-resources h2 {
+    padding: 3% 0px;
 }
 .section {
-    border: 3px rgb(3, 3, 3) solid;
+    border: 3px #6A492B solid;
     border-radius: 15px;
 }
 /* This is the governor class section  */
 .governor {
     margin: 0px 2% 3% 2%;
     padding: 2% 0px 2% 2%;
+    color: #6A492B;
+}
+.governor h3 {
+    padding-bottom: 3%;
 }
 .facility {
     margin: 0px 2% 0px 2%;
     padding: 2% 0px 2% 2%;
+    color: #6A492B;
+}
+.facility h3 {
+    padding-bottom: 3%;
 }
 .minerals {
     width: 70%;
     margin: 2% 1% 0px 1%;
     text-align: center;
+    color: #6A492B;
+    font-size: 18px;
+}
+.minerals h2 {
+    padding: 3% 0px;
 }
 .cart {
     width: 30%;
     margin: 2% 1% 0px 1%;
     text-align: center;
+    color: #6A492B;
+    font-size: 18px;
 }
+.cart h2 {
+    padding: 4% 0px;
+}
+
