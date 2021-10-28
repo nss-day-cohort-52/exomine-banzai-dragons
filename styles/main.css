@@ -3,6 +3,9 @@
     margin: 0px;
     padding: 0px; 
 }
+li {
+    list-style: none;
+}
 #header {
     margin-left: 2%;
     margin-top: 2%;
