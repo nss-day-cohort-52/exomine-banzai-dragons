@@ -5,6 +5,7 @@ import { purchaseMineral } from "./database.js"
 import { colonyMinerals } from "./ColonyMinerals.js"
 import { SpaceCart } from "./cart.js"
 
+
 document.addEventListener(
     "click",
     (event) => {
