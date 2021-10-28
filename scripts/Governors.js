@@ -11,15 +11,12 @@ document.addEventListener(
 
                 selectedGovernorId = parseInt(changeEvent.target.value)
                 if (selectedGovernorId === gov.id) {
-                    setColony(gov.colonyId) 
-=======
-                if (parseInt(changeEvent.target.value) === gov.id) {
                     setColony(gov.colonyId)
-
                 }
             }
         }
-    })
+    }
+)
 
 // governors function provides html for gov options in dropdown format
 export const Governors = () => {
@@ -30,15 +27,13 @@ export const Governors = () => {
 
     for (const governor of governors) {
 
-        if (selectedGovernorId === governor.id) {
+        if (selectedGovernorId === governor.id && governor.active === true) {
             html += `<option value="${governor.id}" selected>${governor.name}</option>`
-        } else {
-=======
-        if (governor.active === true) {
+        } else if (governor.active === true) {
 
-            html += `<option value="${governor.id}">${governor.name}</option>`
-        }
+                html += `<option value="${governor.id}">${governor.name}</option>`
+            }
+        html += `</select>`
+        return html
     }
-    html += `</select>`
-    return html
 }
