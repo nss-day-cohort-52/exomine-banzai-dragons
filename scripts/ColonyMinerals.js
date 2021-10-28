@@ -1,15 +1,9 @@
 // make a function that generates HTML that displays the current colony's mineral inventory (colony is dependent on the selected governor)
-import { getColonies, getGovernors, getMinerals, getColonyMinerals, getTransientState } from "./database.js"
-
-const governors = getGovernors()    
-let clickGovId = 0
-
-
+import { getGovernors, getMinerals, getColonyMinerals, getTransientState } from "./database.js"
 
 // this function builds list items of minerals and tons purchased
 const buildListItem = (colmin) => {
     const minerals = getMinerals()
-    const colonies = getColonies()
     const governors = getGovernors()
 
     const foundGovernor = governors.find((governor) => {

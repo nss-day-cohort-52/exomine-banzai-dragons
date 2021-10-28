@@ -1,7 +1,9 @@
 import { getGovernors, setColony } from "./database.js";
 
 const governors = getGovernors()
+
 let selectedGovernorId = null
+
 document.addEventListener(
     "change",
     (changeEvent) => {
