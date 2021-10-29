@@ -1,5 +1,6 @@
 import { getMinerals, getTransientState, getFacilities } from "./database.js"
 
+
 // Store the imported functions in a variable to be used later. 
 const facilities = getFacilities()
 const minerals = getMinerals()
@@ -10,6 +11,7 @@ const minerals = getMinerals()
 // Use the value of the radio button that gets selected. 
 
 // Click event listener that listens for when a certain radio button in the facility minerals array gets selected and generates HTML with a space cart function. Does each of the input buttons listed in the facility minerals have a unique identifier?
+
 let clickedFacilityId = 0
 
 // Create an event listener that looks through the entire document that listens for a changeEvent. 
@@ -27,7 +29,6 @@ document.addEventListener(
 )
 // Create a function stored in a variable named SpaceCart, whose responsibily is to render the HTML when an input button is changed. 
 export const SpaceCart = () => {
-
     // Make an if statement that has an argument if clickedFacilityId has a truthy value 
     const transientState = getTransientState()
     if (transientState.mineralId) {
