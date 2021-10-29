@@ -183,7 +183,8 @@ export const setFacility = (id) => {
 }
 
 
-
+// The responsibility of this function is to add to the ton property on an existing object in the colonyMinerals array. 
+// If an object doesn't already exist with the same mineralId and colonyId as the newPurchase object, we want to push that object to the colonyMinerals array
 export const purchaseMineral = () => {
     // Copy the current state of user choices
     const newPurchase = { ...database.transientState }
