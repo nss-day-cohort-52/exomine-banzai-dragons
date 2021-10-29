@@ -2,8 +2,6 @@
 import { getFacilities } from "./database.js"
 import { getMinerals, getTransientState } from "./database.js"
 
-import { getMinerals, getTransientState, getFacilities } from "./database.js"
-
 // Store the imported functions in a variable to be used later. 
 const facilities = getFacilities()
 const minerals = getMinerals()
@@ -15,10 +13,7 @@ const minerals = getMinerals()
 
 // Click event listener that listens for when a certain radio button in the facility minerals array gets selected and generates HTML with a space cart function. Does each of the input buttons listed in the facility minerals have a unique identifier?
 let clickedFacilityId = null
-
-=======
 // Create a variable named clickedFacilityId that is equal to 0.
-let clickedFacilityId = 0
 
 // Create an event listener that looks through the entire document that listens for a changeEvent. 
 
@@ -36,9 +31,7 @@ document.addEventListener(
 export const SpaceCart = () => {
 
     if (clickedFacilityId) {
-=======
 // Make an if statement that has an argument if clickedFacilityId is greater than one, then run the following lines. 
-    if (clickedFacilityId > 0) {
 // Store the getTransientState function into a variable names transientState.
         const transientState = getTransientState()
 // Store the facilities.find function in a variable named foundFacility.
