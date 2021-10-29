@@ -4,6 +4,7 @@ import { Governors } from "./Governors.js"
 import { decrementFM, getTransientState, incrementCM, purchaseMineral } from "./database.js"
 import { colonyMinerals } from "./ColonyMinerals.js"
 import { SpaceCart } from "./cart.js"
+// import { Colony } from "./Colonies.js"
 
 // const savedMinId = saveMineral()
 // This eventListner listens for when the user clicks the purchase button
