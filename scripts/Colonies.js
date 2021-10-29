@@ -1,22 +1,17 @@
-// import { getColonies, getGovernors, getTransientState } from "./database.js";
-// const colonies = getColonies()
-// const governors = getGovernors()
-// export const Colony = () => {
-//     const transientState = getTransientState()
-//     const foundGovernor = governors.find(
-//         (governor) => {
-//             return governor.colonyId === transientState.colonyId
-//         }
-//     )
-//     const foundColony = governors.find(
-//         (governor) => {
-//             return governor.colonyId === transientState.colonyId
-//         }
-//     )
-//     if (foundGovernor.colonyId === transientState.colonyId) {
-//         return foundColony.colony
-//     } else {
-//         return `Colony`
-//     }
+import { getColonies, getTransientState } from "./database.js"
 
-// }
+const colonies = getColonies()
+export const Colony = () => {
+    const transientState = getTransientState()
+    const foundColony = colonies.find(
+        (colony) => {
+            return colony.id === transientState.colonyId
+        }
+    )
+    if (foundColony) {
+        return `Available Resources for ${foundColony.colony}`
+    } else {
+        return "Available Resources for Colony"
+    }
+
+}
