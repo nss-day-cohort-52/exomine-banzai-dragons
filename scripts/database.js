@@ -200,7 +200,7 @@ export const purchaseMineral = () => {
     // If this is true, we want to increase the exisiting ton property by 1  
     for (const colonyMineralObj of colonyMinerals) {
         if (colonyMineralObj === foundColonyObj) {
-            // foundColonyObj.ton += 1
+            colonyMineralObj.ton += 1
             document.dispatchEvent(new CustomEvent("mutatedTonProperty"))
         } else {
             // If there is not an existing object with the same facilityId and colonyId on it as our transientState object, we want to add a new unique id to the newPurchase object and push that object to the colonyMinerals array 
