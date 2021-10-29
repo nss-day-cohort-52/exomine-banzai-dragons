@@ -8,7 +8,6 @@ document.addEventListener(
     "change",
     (changeEvent) => {
         if (changeEvent.target.id === "governor") {
-            // clickGovId = parseInt(changeEvent.target.value)
             for (const gov of governors) {
                 selectedGovernorId = parseInt(changeEvent.target.value)
                 if (selectedGovernorId === gov.id) {
