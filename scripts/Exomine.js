@@ -5,13 +5,13 @@ import { decrementFM, getTransientState, incrementCM, purchaseMineral } from "./
 import { colonyMinerals } from "./ColonyMinerals.js"
 import { SpaceCart } from "./cart.js"
 
-let savedMinId = saveMineral()
+const savedMinId = saveMineral()
 // This eventListner listens for when the user clicks the purchase button
 document.addEventListener(
     "click",
     (event) => {
         if (event.target.id === "orderButton") {
-            decrementFM(savedMinId)
+            decrementFM(2)
             incrementCM()
             purchaseMineral()
         }

@@ -194,7 +194,7 @@ export const decrementFM = (id) => {
     const foundFacilityMin = facilityMinerals.find((facilityMineral) => {
         return facilityMineral.id === id
     })
-    foundFacilityMin.ton += 1
+    foundFacilityMin.ton -= 1
     document.dispatchEvent(new CustomEvent("permanentStateChanged"))
 }
 

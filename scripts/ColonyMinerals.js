@@ -2,9 +2,6 @@
 import { getColonies, getGovernors, getMinerals, getColonyMinerals, getTransientState } from "./database.js"
 
 const governors = getGovernors()    
-let clickGovId = 0
-
-
 
 // this function builds list items of minerals and tons purchased
 const buildListItem = (colmin) => {
