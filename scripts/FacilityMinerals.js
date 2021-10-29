@@ -1,6 +1,5 @@
 import { getFacilities, getFacilityMinerals, getMinerals, getTransientState, setMineral } from "./database.js"
 
-
 // Get all of the permanent data we will need to use in this module by calling the getFunctions declared in the database.js 
 // Store their values (arrays of objects) in variables
 const facilities = getFacilities()
@@ -33,18 +32,17 @@ const buildFacilityMineralsList = (facilityMineralObj) => {
     const transientState = getTransientState()
     // Here we are using the .find array method to iterate through the facilities array and return the first facility object that meets the condition set within the function body 
     // Store the value of the .find method in a variable 
+    const transientState = getTransientState()
     const foundFacility = facilities.find(
         facility => {
             return facility.id === facilityMineralObj.facilityId
-        }
-    )
+        })
     // Here we are using the .find array method to iterate through the minerals array and return the first mineral object that meets the condition set within the function body
     // Store the value of the .find method in a variable 
     const foundMineral = minerals.find(
         mineral => {
             return mineral.id === facilityMineralObj.mineralId
-        }
-    )
+        })
     // IF the object stored in our foundFacility variable has an id propery that is strictly equal to the facilityId property on the object that is passed into the fuction as an argument...
     if (transientState.mineralId === foundMineral.id) {
         // We will return a string of html (a radio button enclosed in a list element) that is interpolated with the values of object properties
@@ -57,6 +55,8 @@ const buildFacilityMineralsList = (facilityMineralObj) => {
                 </li>`
     }
 }
+
+
 // Declare and export a new function. This function will be responsible for generating our list of minerals for a specific facility (string of html, radio buttons)
 export const FacilityMinerals = () => {
     // Here we are calling our getTransientState function and storing its value (an object) into a variable

@@ -1,8 +1,6 @@
 // make a function that generates HTML that displays the current colony's mineral inventory (colony is dependent on the selected governor)
 import { getGovernors, getMinerals, getColonyMinerals, getTransientState } from "./database.js"
 
-
-
 // this function builds list items of minerals and tons purchased
 const buildListItem = (colmin) => {
     const minerals = getMinerals()
@@ -12,11 +10,6 @@ const buildListItem = (colmin) => {
         return governor.colonyId === colmin.colonyId
     })
 
-    // const foundColony = colonies.find(
-    //     (colony) => {
-    //         return colony.id === colmin.colonyId
-    //     }
-    // )
     const foundMin = minerals.find(
         (mineral) => {
             return mineral.id === colmin.mineralId
@@ -61,24 +54,9 @@ export const colonyMinerals = () => {
         html += listItems.join("")
         html += "</ul>"
     }
-    // else if (transState.colonyId === 3) {
-    //     html += "<ul>"
-    //     const listItems = jumanjiArray.map(buildListItem)
-    //     html += listItems.join("")
-    //     html += "</ul>"
-    // }
     else {
         html = "Please select governor to see available resources for the colony"
     }
 
-
     return html
 }
-
-// document.addEventListener(
-//     "change",
-//     (changeEvent) => {
-//         if (changeEvent.target.id === "governor") {
-//             clickGovId = 0
-//         }
-//     })

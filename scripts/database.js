@@ -183,6 +183,23 @@ export const setFacility = (id) => {
 }
 
 
+export const incrementCM = (id) => {
+    const colonyMinerals = getColonyMinerals()
+    const foundColonyMin = colonyMinerals.find((colonyMineral) => {
+        return colonyMineral.id === id
+    })
+    foundColonyMin.ton += 1
+    document.dispatchEvent(new CustomEvent("permanentStateChanged"))
+}
+export const decrementFM = (id) => {
+    const facilityMinerals = getFacilityMinerals()
+    const foundFacilityMin = facilityMinerals.find((facilityMineral) => {
+        return facilityMineral.id === id
+    })
+    foundFacilityMin.ton -= 1
+    document.dispatchEvent(new CustomEvent("permanentStateChanged"))
+}
+
 // The responsibility of this function is to add to the ton property on an existing object in the colonyMinerals array. 
 // If an object doesn't already exist with the same mineralId and colonyId as the newPurchase object, we want to push that object to the colonyMinerals array
 export const purchaseMineral = () => {
