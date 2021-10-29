@@ -1,4 +1,4 @@
-import { getFacilities, getFacilityMinerals, getMinerals, getTransientState, setMineral } from "./database.js"
+import { getFacilities, getFacilityMinerals, getMinerals, getTransientState, setMineral, setFacility } from "./database.js"
 
 // Get all of the permanent data we will need to use in this module by calling the getFunctions declared in the database.js 
 // Store their values (arrays of objects) in variables
@@ -24,27 +24,38 @@ document.addEventListener(
                     }
                 }
             }
+      })
+
+export const facMinHeading = () => {
+    const transientState = getTransientState()
+    const foundFacility = facilities.find((facility) => {
+        return facility.id === transientState.facilityId
+    })
+    let html = "Facility Minerals "
+        if (foundFacility) {
+            html += `at ${foundFacility.facility}`
         }
-    )
-    
-    // Here we are declaring and exporting a fuction that will return a string of html (a radio button). This function takes an object as a parameter
-    const buildFacilityMineralsList = (facilityMineralObj) => {
-        const transientState = getTransientState()
-        // Here we are using the .find array method to iterate through the facilities array and return the first facility object that meets the condition set within the function body 
-        // Store the value of the .find method in a variable 
-        const foundFacility = facilities.find(
-            facility => {
-                return facility.id === facilityMineralObj.facilityId
-            })
-            // Here we are using the .find array method to iterate through the minerals array and return the first mineral object that meets the condition set within the function body
-            // Store the value of the .find method in a variable 
-            const foundMineral = minerals.find(
-                mineral => {
-                    return mineral.id === facilityMineralObj.mineralId
-                })
-                // IF the object stored in our foundFacility variable has an id propery that is strictly equal to the facilityId property on the object that is passed into the fuction as an argument...
-                if (transientState.mineralId === foundMineral.id) {
-                    // We will return a string of html (a radio button enclosed in a list element) that is interpolated with the values of object properties
+    return html
+}
+
+// Here we are declaring and exporting a fuction that will return a string of html (a radio button). This function takes an object as a parameter
+const buildFacilityMineralsList = (facilityMineralObj) => {
+    const transientState = getTransientState()
+    // Here we are using the .find array method to iterate through the facilities array and return the first facility object that meets the condition set within the function body 
+    // Store the value of the .find method in a variable 
+    const foundFacility = facilities.find(
+        facility => {
+            return facility.id === facilityMineralObj.facilityId
+        })
+    // Here we are using the .find array method to iterate through the minerals array and return the first mineral object that meets the condition set within the function body
+    // Store the value of the .find method in a variable 
+    const foundMineral = minerals.find(
+        mineral => {
+            return mineral.id === facilityMineralObj.mineralId
+        })
+    // IF the object stored in our foundFacility variable has an id propery that is strictly equal to the facilityId property on the object that is passed into the fuction as an argument...
+    if (transientState.mineralId === foundMineral.id) {
+        // We will return a string of html (a radio button enclosed in a list element) that is interpolated with the values of object properties
         return `<li>
         <input type="radio" name="facilityMinerals" value="${facilityMineralObj.id}" checked="checked"/> ${facilityMineralObj.ton} tons of ${foundMineral.mineral} at ${foundFacility.facility}
         </li>`
@@ -58,6 +69,7 @@ document.addEventListener(
 
 // Declare and export a new function. This function will be responsible for generating our list of minerals for a specific facility (string of html, radio buttons)
 export const FacilityMinerals = () => {
+    const facilityMinerals = getFacilityMinerals()
     // Here we are calling our getTransientState function and storing its value (an object) into a variable
     const transientState = getTransientState()
     

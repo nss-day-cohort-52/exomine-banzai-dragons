@@ -182,30 +182,11 @@ export const setFacility = (id) => {
     document.dispatchEvent(new CustomEvent("transientStateChanged"))
 }
 
-
-export const incrementCM = (id) => {
-    const colonyMinerals = getColonyMinerals()
-    const foundColonyMin = colonyMinerals.find((colonyMineral) => {
-        return colonyMineral.id === id
-    })
-    foundColonyMin.ton += 1
-    document.dispatchEvent(new CustomEvent("permanentStateChanged"))
-}
-export const decrementFM = (id) => {
-    const facilityMinerals = getFacilityMinerals()
-    const foundFacilityMin = facilityMinerals.find((facilityMineral) => {
-        return facilityMineral.id === id
-    })
-    foundFacilityMin.ton -= 1
-    document.dispatchEvent(new CustomEvent("permanentStateChanged"))
-}
-
 // The responsibility of this function is to add to the ton property on an existing object in the colonyMinerals array. 
 // If an object doesn't already exist with the same mineralId and colonyId as the newPurchase object, we want to push that object to the colonyMinerals array
 export const purchaseMineral = () => {
     // Copy the current state of user choices
     const newPurchase = { ...database.transientState }
-
     const colonyMinerals = getColonyMinerals()
     const facilityMinerals = getFacilityMinerals()
     // Use .find to interate through the colonyMinerals array and see if the object in the transient state has the same MineralId and colonyId of an object in the calling array
@@ -244,8 +225,7 @@ export const purchaseMineral = () => {
     }
     delete database.transientState.mineralId
     document.dispatchEvent(new CustomEvent("permanentStateChanged"))
-    // }
+    }
     // Reset the temporary state for user choices
 
     // Broadcast a notification that permanent state has changed
-}
