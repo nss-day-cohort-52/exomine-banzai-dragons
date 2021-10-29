@@ -2,7 +2,7 @@ import { Facilities } from "./Facilities.js"
 import { FacilityMinerals, facMinHeading } from "./FacilityMinerals.js"
 import { Governors } from "./Governors.js"
 import { purchaseMineral } from "./database.js"
-import { colonyMinerals } from "./ColonyMinerals.js"
+import { colonyMinerals, Colony } from "./ColonyMinerals.js"
 import { SpaceCart } from "./cart.js"
 
 // This eventListner listens for when the user clicks the purchase button
@@ -32,7 +32,7 @@ export const Exomine = () => {
             </article>
             </div>
             <div class = "section colony-resources">
-                <h2>Available Resources for Colony</h2>
+                <h2>${Colony()}</h2>
                 ${colonyMinerals()}
             </div>
         </section>

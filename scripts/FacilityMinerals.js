@@ -70,6 +70,7 @@ const buildFacilityMineralsList = (facilityMineralObj) => {
 
 // Declare and export a new function. This function will be responsible for generating our list of minerals for a specific facility (string of html, radio buttons)
 export const FacilityMinerals = () => {
+    const facilityMinerals = getFacilityMinerals()
     // Here we are calling our getTransientState function and storing its value (an object) into a variable
     const transientState = getTransientState()
 

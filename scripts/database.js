@@ -181,46 +181,20 @@ export const setFacility = (id) => {
     database.transientState.facilityId = id
     document.dispatchEvent(new CustomEvent("transientStateChanged"))
 }
-// export const incrementCM = (id) => {
-//     const colonyMinerals = getColonyMinerals()
-//     const foundColonyMin = colonyMinerals.find((colonyMineral) => {
-//         return colonyMineral.id === id
-//     })
-//     foundColonyMin.ton += 1
-//     document.dispatchEvent(new CustomEvent("permanentStateChanged"))
-// }
-// export const decrementFM = (id) => {
-//     const facilityMinerals = getFacilityMinerals()
-//     const foundFacilityMin = facilityMinerals.find((facilityMineral) => {
-//         return facilityMineral.id === id
-//     })
-//     foundFacilityMin.ton -= 1
-//     document.dispatchEvent(new CustomEvent("permanentStateChanged"))
-// }
-
-// export const incrementCM = () => {
-//     const newPurchase = {...database.transientState}
-//     const colonyMinerals = getColonyMinerals()
-//     let foundColonyMin = colonyMinerals.find((colonyMineral) => {
-//         return colonyMineral.mineralId === newPurchase.mineralId && colonyMineral.colonyId === newPurchase.colonyId
-//     })
-//     foundColonyMin.ton += 1
-//     document.dispatchEvent(new CustomEvent("permanentStateChanged"))
-// }
 
 export const purchaseMineral = () => {
     // Copy the current state of user choices
     const newPurchase = { ...database.transientState }
 
-    const colonyMinerals = getColonyMinerals()
-    const facilityMinerals = getFacilityMinerals()
+    // const colonyMinerals = getColonyMinerals()
+    // const facilityMinerals = getFacilityMinerals()
     // Use .find to interate through the colonyMinerals array and see if the object in the transient state has the same MineralId and colonyId of an object in the calling array
     // IF this condition is met, our .find method will return that object. We store this object in our foundColonyObj variable
-    let foundColonyObj = colonyMinerals.find(
+    let foundColonyObj = database.colonyMinerals.find(
         (colonyMineralObj) => {
             return colonyMineralObj.mineralId === newPurchase.mineralId && colonyMineralObj.colonyId === newPurchase.colonyId
         })
-    let foundFacilityMineral = facilityMinerals.find(
+    let foundFacilityMineral = database.facilityMinerals.find(
         (facilityMineralObj) => {
             return facilityMineralObj.mineralId === newPurchase.mineralId && facilityMineralObj.facilityId === newPurchase.facilityId
         }
