@@ -37,7 +37,8 @@ export const Facilities = () => {
     for (const facility of facilities) {
         if (transientState.facilityId === facility.id && facility.active === true) {
             html += `<option value="${facility.id}" selected>${facility.facility}</option>`
-        } else if (facility.active === true) {
+        }
+        else if (facility.active === true) {
             html += `<option value="${facility.id}">${facility.facility}</option>`
         }
         html += `</select>`
