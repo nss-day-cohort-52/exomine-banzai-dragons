@@ -41,7 +41,7 @@ export const Facilities = () => {
         else if (facility.active === true) {
             html += `<option value="${facility.id}">${facility.facility}</option>`
         }
-        html += `</select>`
-        return html
     }
+    html += `</select>`
+    return html
 }

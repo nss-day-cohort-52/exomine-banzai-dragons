@@ -216,22 +216,22 @@ export const purchaseMineral = () => {
     // Iterate through the colonyMinerals array
     // While iterating, we want to check and see if any of the objects in that array have the same id property value as our foundColonyObj.id
     // If this is true, we want to increase the exisiting ton property by 1  
-    for (const colonyMineralObj of colonyMinerals) {
-        if (colonyMineralObj === foundColonyObj) {
-            colonyMineralObj.ton += 1
-            document.dispatchEvent(new CustomEvent("mutatedTonProperty"))
-        } else {
-            // If there is not an existing object with the same facilityId and colonyId on it as our transientState object, we want to add a new unique id to the newPurchase object and push that object to the colonyMinerals array 
-            const lastIndex = database.colonyMinerals.length - 1
-            newPurchase.id = database.colonyMinerals[lastIndex].id + 1
-            // We also want to add a ton property and set it's value to 1
-            newPurchase.ton = 1
-            // Finally, add the new order object to custom orders state
-            database.colonyMinerals.push(newPurchase)
-            // database.transientState = {}
-            document.dispatchEvent(new CustomEvent("pushedNewObject"))
-        }
+    // for (const colonyMineralObj of colonyMinerals) {
+    if (foundColonyObj) {
+        foundColonyObj.ton += 1
+    } else {
+        // If there is not an existing object with the same facilityId and colonyId on it as our transientState object, we want to add a new unique id to the newPurchase object and push that object to the colonyMinerals array 
+        const lastIndex = database.colonyMinerals.length - 1
+        newPurchase.id = database.colonyMinerals[lastIndex].id + 1
+        // We also want to add a ton property and set it's value to 1
+        newPurchase.ton = 1
+        // Finally, push the new colonyMineral object to colonyMinerals array
+        database.colonyMinerals.push(newPurchase)
+        // database.transientState = {}
+        // document.dispatchEvent(new CustomEvent("pushedNewObject"))
     }
+    document.dispatchEvent(new CustomEvent("permanentStateChanged"))
+    // }
     // Reset the temporary state for user choices
 
     // Broadcast a notification that permanent state has changed

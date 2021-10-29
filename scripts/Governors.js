@@ -33,7 +33,7 @@ export const Governors = () => {
         } else if (governor.active === true) {
             html += `<option value="${governor.id}">${governor.name}</option>`
         }
-        html += `</select>`
-        return html
     }
+    html += `</select>`
+    return html
 }

@@ -32,7 +32,6 @@ const buildFacilityMineralsList = (facilityMineralObj) => {
     const transientState = getTransientState()
     // Here we are using the .find array method to iterate through the facilities array and return the first facility object that meets the condition set within the function body 
     // Store the value of the .find method in a variable 
-    const transientState = getTransientState()
     const foundFacility = facilities.find(
         facility => {
             return facility.id === facilityMineralObj.facilityId
