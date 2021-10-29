@@ -79,7 +79,6 @@ export const FacilityMinerals = () => {
     3. A new array will be returned with all of the objects that met the condition(s) that were declared in the function body
     4. Store this value in a new variable
     */
-   const facilityMinerals = getFacilityMinerals()
     const redHawkMineralsArr = facilityMinerals.filter(facilityMineralObj => {
         return facilityMineralObj.facilityId === 1
     })
