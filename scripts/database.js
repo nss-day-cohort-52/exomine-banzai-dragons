@@ -181,6 +181,8 @@ export const setFacility = (id) => {
     database.transientState.facilityId = id
     document.dispatchEvent(new CustomEvent("transientStateChanged"))
 }
+
+
 export const incrementCM = (id) => {
     const colonyMinerals = getColonyMinerals()
     const foundColonyMin = colonyMinerals.find((colonyMineral) => {
@@ -198,36 +200,51 @@ export const decrementFM = (id) => {
     document.dispatchEvent(new CustomEvent("permanentStateChanged"))
 }
 
+// The responsibility of this function is to add to the ton property on an existing object in the colonyMinerals array. 
+// If an object doesn't already exist with the same mineralId and colonyId as the newPurchase object, we want to push that object to the colonyMinerals array
 export const purchaseMineral = () => {
     // Copy the current state of user choices
     const newPurchase = { ...database.transientState }
 
     const colonyMinerals = getColonyMinerals()
+    const facilityMinerals = getFacilityMinerals()
     // Use .find to interate through the colonyMinerals array and see if the object in the transient state has the same MineralId and colonyId of an object in the calling array
     // IF this condition is met, our .find method will return that object. We store this object in our foundColonyObj variable
-    const foundColonyObj = colonyMinerals.find(
+    const foundColonyObj = database.colonyMinerals.find(
         (colonyMineralObj) => {
             return colonyMineralObj.mineralId === newPurchase.mineralId && colonyMineralObj.colonyId === newPurchase.colonyId
+        })
+    const foundFacilityObj = database.facilityMinerals.find(
+        (facilityMineralObj) => {
+            return facilityMineralObj.mineralId === newPurchase.mineralId && facilityMineralObj.facilityId === newPurchase.facilityId
         })
     // Iterate through the colonyMinerals array
     // While iterating, we want to check and see if any of the objects in that array have the same id property value as our foundColonyObj.id
     // If this is true, we want to increase the exisiting ton property by 1  
-    for (const colonyMineralObj of colonyMinerals) {
-        if (colonyMineralObj === foundColonyObj) {
-            colonyMineralObj.ton += 1
-            document.dispatchEvent(new CustomEvent("mutatedTonProperty"))
-        } else {
-            // If there is not an existing object with the same facilityId and colonyId on it as our transientState object, we want to add a new unique id to the newPurchase object and push that object to the colonyMinerals array 
-            const lastIndex = database.colonyMinerals.length - 1
-            newPurchase.id = database.colonyMinerals[lastIndex].id + 1
-            // We also want to add a ton property and set it's value to 1
-            newPurchase.ton = 1
-            // Finally, add the new order object to custom orders state
-            database.colonyMinerals.push(newPurchase)
-            // database.transientState = {}
-            document.dispatchEvent(new CustomEvent("pushedNewObject"))
+    // for (const colonyMineralObj of colonyMinerals) {
+    if (foundColonyObj) {
+        foundColonyObj.ton += 1
+        foundFacilityObj.ton -= 1
+    } else {
+        const brandNewPurchase = {
+            colonyId: newPurchase.colonyId,
+            mineralId: newPurchase.mineralId,
+            ton: 1
         }
+        foundFacilityObj.ton -= 1
+        // If there is not an existing object with the same facilityId and colonyId on it as our transientState object, we want to add a new unique id to the newPurchase object and push that object to the colonyMinerals array 
+        const lastIndex = database.colonyMinerals.length - 1
+        brandNewPurchase.id = database.colonyMinerals[lastIndex].id + 1
+        // We also want to add a ton property and set it's value to 1
+        // newPurchase.ton = 1
+        // Finally, push the new colonyMineral object to colonyMinerals array
+        // debugger
+        database.colonyMinerals.push(brandNewPurchase)
+        // document.dispatchEvent(new CustomEvent("pushedNewObject"))
     }
+    delete database.transientState.mineralId
+    document.dispatchEvent(new CustomEvent("permanentStateChanged"))
+    // }
     // Reset the temporary state for user choices
 
     // Broadcast a notification that permanent state has changed

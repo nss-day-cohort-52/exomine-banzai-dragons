@@ -16,12 +16,12 @@ document.addEventListener("transientStateChanged", event => {
     renderAllHTML()
 })
 // This eventListener is for when a user adds 1 ton to an existing colonyMineral object
-document.addEventListener("mutatedTonProperty", event => {
+document.addEventListener("permanentStateChanged", event => {
     console.log("Permanent state has changed. Added 1 ton to the exisiting colonyMineralObject. Regenerating HTML...")
     renderAllHTML()
 })
 // This eventlistener is for when the purchase button is clicked and a new object is added to the colonytMinerals arr
-document.addEventListener("pushedNewObject", event => {
-    console.log("Permanent state has changed. Added new object to the colonyMinerals array. Regenerating HTML...")
-    renderAllHTML()
-})
+// document.addEventListener("pushedNewObject", event => {
+//     console.log("Permanent state has changed. Added new object to the colonyMinerals array. Regenerating HTML...")
+//     renderAllHTML()
+// })
