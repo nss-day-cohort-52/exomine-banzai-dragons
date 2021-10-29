@@ -7,7 +7,7 @@ const facilities = getFacilities()
 const facilityMinerals = getFacilityMinerals()
 const minerals = getMinerals()
 
-
+let clickedMineralId = 0
 // This is a change event listener that listens for a radio button to be selected
 document.addEventListener(
     "change",
@@ -17,8 +17,9 @@ document.addEventListener(
         if (changeEvent.target.name === "facilityMinerals") {
             /*IF that condition is met, we need to iterate through the facilityMinerals array with a forof loop (see line 7 for where we stored our array in a variable)*/
             for (const facilityMineral of facilityMinerals) {
+                clickedMineralId = parseInt(changeEvent.target.value)
                 /*Next we use an if statement to check the value of the facilityMineral.id property on each object and see if any of them are equal to the value to our changeEvent.target.value (the selected radio button) */
-                if (parseInt(changeEvent.target.value) === facilityMineral.id) {
+                if (clickedMineralId === facilityMineral.id) {
                     /*IF that condition is met, we use the setMineral() function to set the "mineralId" property that met the condition to our transientState object (see database.js:168 for function declaration)*/
                     setMineral(facilityMineral.mineralId)
                 }
@@ -29,6 +30,7 @@ document.addEventListener(
 
 // Here we are declaring and exporting a fuction that will return a string of html (a radio button). This function takes an object as a parameter
 const buildFacilityMineralsList = (facilityMineralObj) => {
+    const transientState = getTransientState()
     // Here we are using the .find array method to iterate through the facilities array and return the first facility object that meets the condition set within the function body 
     // Store the value of the .find method in a variable 
     const foundFacility = facilities.find(
@@ -44,11 +46,15 @@ const buildFacilityMineralsList = (facilityMineralObj) => {
         }
     )
     // IF the object stored in our foundFacility variable has an id propery that is strictly equal to the facilityId property on the object that is passed into the fuction as an argument...
-    if (foundFacility.id === facilityMineralObj.facilityId && foundMineral.id === facilityMineralObj.mineralId) {
+    if (transientState.mineralId === foundMineral.id) {
         // We will return a string of html (a radio button enclosed in a list element) that is interpolated with the values of object properties
         return `<li>
-            <input type="radio" name="facilityMinerals" value="${facilityMineralObj.id}" /> ${facilityMineralObj.ton} tons of ${foundMineral.mineral} at ${foundFacility.facility}
+            <input type="radio" name="facilityMinerals" value="${facilityMineralObj.id}" checked="checked"/> ${facilityMineralObj.ton} tons of ${foundMineral.mineral} at ${foundFacility.facility}
             </li>`
+    } else {
+        return `<li>
+                <input type="radio" name="facilityMinerals" value="${facilityMineralObj.id}" /> ${facilityMineralObj.ton} tons of ${foundMineral.mineral} at ${foundFacility.facility}
+                </li>`
     }
 }
 // Declare and export a new function. This function will be responsible for generating our list of minerals for a specific facility (string of html, radio buttons)
@@ -113,5 +119,8 @@ export const FacilityMinerals = () => {
     // Finally, return the string of html that meets the first test it passes in the if else statements
     return html
 }
+
+
+
 
 

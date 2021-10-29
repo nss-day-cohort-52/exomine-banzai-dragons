@@ -1,15 +1,11 @@
 // make a function that generates HTML that displays the current colony's mineral inventory (colony is dependent on the selected governor)
-import { getColonies, getGovernors, getMinerals, getColonyMinerals, getTransientState } from "./database.js"
-
-const governors = getGovernors()    
-let clickGovId = 0
+import { getGovernors, getMinerals, getColonyMinerals, getTransientState } from "./database.js"
 
 
 
 // this function builds list items of minerals and tons purchased
 const buildListItem = (colmin) => {
     const minerals = getMinerals()
-    const colonies = getColonies()
     const governors = getGovernors()
 
     const foundGovernor = governors.find((governor) => {
@@ -27,12 +23,12 @@ const buildListItem = (colmin) => {
         }
     )
     if (foundGovernor.colonyId === colmin.colonyId) {
-        return `<li> ${colmin.ton} tons of ${foundMin.mineral}</li>`
+        return `<div> ${colmin.ton} tons of ${foundMin.mineral}</div>`
     }
-    
+
 }
 
-export const colonyMinerals = () => {  
+export const colonyMinerals = () => {
     const colmins = getColonyMinerals()
     let html = ""
 
@@ -46,7 +42,7 @@ export const colonyMinerals = () => {
         return colmin.colonyId === 3
     })
     const transState = getTransientState()
-   
+
     if (transState.colonyId === 1) {
         html += "<ul>"
         const listItems = halcyonArray.map(buildListItem)
@@ -74,7 +70,7 @@ export const colonyMinerals = () => {
     else {
         html = "Please select governor to see available resources for the colony"
     }
-    
+
 
     return html
 }
