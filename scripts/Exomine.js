@@ -4,6 +4,7 @@ import { Governors } from "./Governors.js"
 import { purchaseMineral } from "./database.js"
 import { colonyMinerals, Colony } from "./ColonyMinerals.js"
 import { SpaceCart } from "./cart.js"
+// import { Colony } from "./Colonies.js"
 
 // This eventListner listens for when the user clicks the purchase button
 document.addEventListener(
