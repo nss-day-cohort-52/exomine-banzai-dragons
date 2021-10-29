@@ -1,18 +1,15 @@
 import { Facilities } from "./Facilities.js"
-import { FacilityMinerals, saveMineral } from "./FacilityMinerals.js"
+import { FacilityMinerals, facMinHeading } from "./FacilityMinerals.js"
 import { Governors } from "./Governors.js"
-import { decrementFM, getTransientState, incrementCM, purchaseMineral } from "./database.js"
+import { purchaseMineral } from "./database.js"
 import { colonyMinerals } from "./ColonyMinerals.js"
 import { SpaceCart } from "./cart.js"
 
-const savedMinId = saveMineral()
 // This eventListner listens for when the user clicks the purchase button
 document.addEventListener(
     "click",
     (event) => {
         if (event.target.id === "orderButton") {
-            decrementFM(2)
-            incrementCM()
             purchaseMineral()
         }
     }
@@ -41,7 +38,7 @@ export const Exomine = () => {
         </section>
         <section id="bottom-section">
             <div class = "section minerals">
-                <h2>Minerals at Facility</h2>
+                <h2>${facMinHeading()}</h2>
                 ${FacilityMinerals()}
             </div>
             <div class ="section cart">

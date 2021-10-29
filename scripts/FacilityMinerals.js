@@ -1,4 +1,4 @@
-import { getFacilities, getFacilityMinerals, getMinerals, getTransientState, setMineral } from "./database.js"
+import { getFacilities, getFacilityMinerals, getMinerals, getTransientState, setMineral, setFacility } from "./database.js"
 
 // Get all of the permanent data we will need to use in this module by calling the getFunctions declared in the database.js 
 // Store their values (arrays of objects) in variables
@@ -27,12 +27,23 @@ document.addEventListener(
     }
 )
 
+export const facMinHeading = () => {
+    const transientState = getTransientState()
+    const foundFacility = facilities.find((facility) => {
+        return facility.id === transientState.facilityId
+    })
+    let html = "Facility Minerals "
+        if (foundFacility) {
+            html += `at ${foundFacility.facility}`
+        }
+    return html
+}
+
 // Here we are declaring and exporting a fuction that will return a string of html (a radio button). This function takes an object as a parameter
 const buildFacilityMineralsList = (facilityMineralObj) => {
     const transientState = getTransientState()
     // Here we are using the .find array method to iterate through the facilities array and return the first facility object that meets the condition set within the function body 
     // Store the value of the .find method in a variable 
-    const transientState = getTransientState()
     const foundFacility = facilities.find(
         facility => {
             return facility.id === facilityMineralObj.facilityId

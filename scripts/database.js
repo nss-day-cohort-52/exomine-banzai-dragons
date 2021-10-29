@@ -181,54 +181,70 @@ export const setFacility = (id) => {
     database.transientState.facilityId = id
     document.dispatchEvent(new CustomEvent("transientStateChanged"))
 }
-export const incrementCM = (id) => {
-    const colonyMinerals = getColonyMinerals()
-    const foundColonyMin = colonyMinerals.find((colonyMineral) => {
-        return colonyMineral.id === id
-    })
-    foundColonyMin.ton += 1
-    document.dispatchEvent(new CustomEvent("permanentStateChanged"))
-}
-export const decrementFM = (id) => {
-    const facilityMinerals = getFacilityMinerals()
-    const foundFacilityMin = facilityMinerals.find((facilityMineral) => {
-        return facilityMineral.id === id
-    })
-    foundFacilityMin.ton -= 1
-    document.dispatchEvent(new CustomEvent("permanentStateChanged"))
-}
+// export const incrementCM = (id) => {
+//     const colonyMinerals = getColonyMinerals()
+//     const foundColonyMin = colonyMinerals.find((colonyMineral) => {
+//         return colonyMineral.id === id
+//     })
+//     foundColonyMin.ton += 1
+//     document.dispatchEvent(new CustomEvent("permanentStateChanged"))
+// }
+// export const decrementFM = (id) => {
+//     const facilityMinerals = getFacilityMinerals()
+//     const foundFacilityMin = facilityMinerals.find((facilityMineral) => {
+//         return facilityMineral.id === id
+//     })
+//     foundFacilityMin.ton -= 1
+//     document.dispatchEvent(new CustomEvent("permanentStateChanged"))
+// }
+
+// export const incrementCM = () => {
+//     const newPurchase = {...database.transientState}
+//     const colonyMinerals = getColonyMinerals()
+//     let foundColonyMin = colonyMinerals.find((colonyMineral) => {
+//         return colonyMineral.mineralId === newPurchase.mineralId && colonyMineral.colonyId === newPurchase.colonyId
+//     })
+//     foundColonyMin.ton += 1
+//     document.dispatchEvent(new CustomEvent("permanentStateChanged"))
+// }
 
 export const purchaseMineral = () => {
     // Copy the current state of user choices
     const newPurchase = { ...database.transientState }
 
     const colonyMinerals = getColonyMinerals()
+    const facilityMinerals = getFacilityMinerals()
     // Use .find to interate through the colonyMinerals array and see if the object in the transient state has the same MineralId and colonyId of an object in the calling array
     // IF this condition is met, our .find method will return that object. We store this object in our foundColonyObj variable
-    const foundColonyObj = colonyMinerals.find(
+    let foundColonyObj = colonyMinerals.find(
         (colonyMineralObj) => {
             return colonyMineralObj.mineralId === newPurchase.mineralId && colonyMineralObj.colonyId === newPurchase.colonyId
         })
+    let foundFacilityMineral = facilityMinerals.find(
+        (facilityMineralObj) => {
+            return facilityMineralObj.mineralId === newPurchase.mineralId && facilityMineralObj.facilityId === newPurchase.facilityId
+        }
+    )
     // Iterate through the colonyMinerals array
     // While iterating, we want to check and see if any of the objects in that array have the same id property value as our foundColonyObj.id
-    // If this is true, we want to increase the exisiting ton property by 1  
-    for (const colonyMineralObj of colonyMinerals) {
-        if (colonyMineralObj === foundColonyObj) {
-            colonyMineralObj.ton += 1
-            document.dispatchEvent(new CustomEvent("mutatedTonProperty"))
-        } else {
-            // If there is not an existing object with the same facilityId and colonyId on it as our transientState object, we want to add a new unique id to the newPurchase object and push that object to the colonyMinerals array 
-            const lastIndex = database.colonyMinerals.length - 1
-            newPurchase.id = database.colonyMinerals[lastIndex].id + 1
-            // We also want to add a ton property and set it's value to 1
-            newPurchase.ton = 1
-            // Finally, add the new order object to custom orders state
-            database.colonyMinerals.push(newPurchase)
-            // database.transientState = {}
-            document.dispatchEvent(new CustomEvent("pushedNewObject"))
-        }
+    // If this is true, we want to increase the exisiting ton property by 1 
+    if (foundColonyObj) {
+    foundColonyObj.ton += 1
+    foundFacilityMineral.ton -= 1
     }
+    else {
+        // If there is not an existing object with the same facilityId and colonyId on it as our transientState object, we want to add a new unique id to the newPurchase object and push that object to the colonyMinerals array 
+        const lastIndex = database.colonyMinerals.length - 1
+        newPurchase.id = database.colonyMinerals[lastIndex].id + 1
+        // We also want to add a ton property and set it's value to 1
+        newPurchase.ton = 1
+        // Finally, add the new order object to custom orders state
+        database.colonyMinerals.push(newPurchase)
+        // database.transientState = {}
+        document.dispatchEvent(new CustomEvent("pushedNewObject"))
+    }
+    document.dispatchEvent(new CustomEvent("mutatedTonProperty"))
+}
     // Reset the temporary state for user choices
 
     // Broadcast a notification that permanent state has changed
-}
