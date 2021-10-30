@@ -45,3 +45,15 @@ export const Facilities = () => {
     html += `</select>`
     return html
 }
+
+export const facMinHeading = () => {
+    const transientState = getTransientState()
+    const foundFacility = facilities.find((facility) => {
+        return facility.id === transientState.facilityId
+    })
+    let html = "Facility Minerals "
+        if (foundFacility) {
+            html += `at ${foundFacility.facility}`
+        }
+    return html
+}

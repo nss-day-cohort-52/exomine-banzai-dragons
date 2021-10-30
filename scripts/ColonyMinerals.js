@@ -1,7 +1,6 @@
-// make a function that generates HTML that displays the current colony's mineral inventory (colony is dependent on the selected governor)
 import { getGovernors, getMinerals, getColonyMinerals, getTransientState } from "./database.js"
 
-// this function builds list items of minerals and tons purchased
+// this function takes an object as a parameter and generates html elements to display the inventory of minerals for a selected colony
 const buildListItem = (colmin) => {
     const minerals = getMinerals()
     const governors = getGovernors()
@@ -55,7 +54,7 @@ export const colonyMinerals = () => {
         html += "</ul>"
     }
     else {
-        html = "Please select governor to see available resources for the colony"
+        html = "Please select a governor to see available resources for a colony"
     }
 
     return html

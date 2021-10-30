@@ -12,16 +12,12 @@ renderAllHTML()
 
 // This eventListener is for whenever the setFunctions are called (This is when we recieve user input via dropdowns and radio buttons) 
 document.addEventListener("transientStateChanged", event => {
-    console.log("Transient state has changed. Regenerating HTML...")
+    console.log("Transient state has changed. User has selected input. Regenerating HTML...")
     renderAllHTML()
 })
 // This eventListener is for when a user adds 1 ton to an existing colonyMineral object
 document.addEventListener("permanentStateChanged", event => {
-    console.log("Permanent state has changed. Added 1 ton to the exisiting colonyMineralObject. Regenerating HTML...")
+    console.log("Permanent state has changed. Added 1 ton of the mineral selected to the colony's inventory . Regenerating HTML...")
     renderAllHTML()
 })
-// This eventlistener is for when the purchase button is clicked and a new object is added to the colonytMinerals arr
-// document.addEventListener("pushedNewObject", event => {
-//     console.log("Permanent state has changed. Added new object to the colonyMinerals array. Regenerating HTML...")
-//     renderAllHTML()
-// })
+
