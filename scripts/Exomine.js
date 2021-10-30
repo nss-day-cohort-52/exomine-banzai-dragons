@@ -1,8 +1,8 @@
-import { Facilities, facMinHeading } from "./Facilities.js"
-import { FacilityMinerals } from "./FacilityMinerals.js"
+import { Facilities } from "./Facilities.js"
+import { FacilityMinerals, FacilityMineralHeading } from "./FacilityMinerals.js"
 import { Governors } from "./Governors.js"
 import { purchaseMineral } from "./database.js"
-import { colonyMinerals } from "./ColonyMinerals.js"
+import { ColonyMinerals } from "./ColonyMinerals.js"
 import { SpaceCart } from "./cart.js"
 import { Colony } from "./Colonies.js"
 
@@ -35,12 +35,12 @@ export const Exomine = () => {
             </div>
             <div class = "section colony-resources">
                 <h2>${Colony()}</h2>
-                ${colonyMinerals()}
+                ${ColonyMinerals()}
             </div>
         </section>
         <section id="bottom-section">
             <div class = "section minerals">
-                <h2>${facMinHeading()}</h2>
+                <h2>${FacilityMineralHeading()}</h2>
                 ${FacilityMinerals()}
             </div>
             <div class ="section cart">

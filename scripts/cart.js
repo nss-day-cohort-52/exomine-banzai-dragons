@@ -1,55 +1,31 @@
 import { getMinerals, getTransientState, getFacilities } from "./database.js"
 
-// Store the imported functions in a variable to be used later. 
 const facilities = getFacilities()
 const minerals = getMinerals()
 
-
-// Write a function that displays in HTML the values stored in the transient state object. 
-
-// Use the value of the radio button that gets selected. 
-
-// Click event listener that listens for when a certain radio button in the facility minerals array gets selected and generates HTML with a space cart function. Does each of the input buttons listed in the facility minerals have a unique identifier?
-
-// let clickedFacilityId = 0
-
-
-
-// Create an event listener that looks through the entire document that listens for a changeEvent. 
-
-document.addEventListener(
-    "change",
-    (changeEvent) => {
-        // Create an if statement that only is activated when a target with a name of "facilityMinerals" changes. 
-        if (changeEvent.target.name === "facilityMinerals") {
-            // Set the clickedFacilityId variable to the value of the facilityMinerals button that was clicked and convert it to a number instead of a string. 
-            // clickedFacilityId = parseInt(changeEvent.target.value)
-            document.dispatchEvent(new CustomEvent("transientStateChanged"))
-        }
-    }
-)
-// Create a function stored in a variable named SpaceCart, whose responsibily is to render the HTML when an input button is changed. 
+// The responsibily of this function is to generate html content in the Space Cart section of the webpage, this is dependent upon which radio button is selected by the user
 export const SpaceCart = () => {
-    // Make an if statement that has an argument if clickedFacilityId has a truthy value 
     const transientState = getTransientState()
+    // IF a radio button has been selected
     if (transientState.mineralId) {
-        // Store the getTransientState function into a variable names transientState.
-        // Store the facilities.find function in a variable named foundFacility.
+        // We can use the .find array method to iterate through the facilites array and return the facility object that is related to the object selected (radio button selected)
+        // Store the value of the .find method in a variable (an object)
         const foundFacility = facilities.find(facility => {
-            // This function finds the transientState.facilityId that is equal to the facility.id number. 
             return facility.id === transientState.facilityId
         })
-        // Store the minerals.find function into a variable named foundMineral.
+        // We can use the .find array method to iterate through the minerals array and return the mineral object that is related to the object selected (radio button selected)
+        // Store the value of the .find method in a variable (an object)
         const foundMineral = minerals.find(mineral => {
-            // This function finds the transientState.mineralId that is equal to the mineral.id number. 
             return mineral.id === transientState.mineralId
         })
-        // If both of those conditionals are met, then return this string interpolation. 
+        // RETURN A STRING WITH INTERPOLATION
         return `<div>
             1 ton of ${foundMineral.mineral} at ${foundFacility.facility}
             </div>`
-    } else {
-        // If none of these conditionals are met, then run this string interpolation. 
+    }
+    // ELSE (meaning a radio button has not been selected)
+    else {
+        //RETURN A STRING (acts as a placeholder)
         return `<div>
             Please choose a mineral from a facility...
         </div>`

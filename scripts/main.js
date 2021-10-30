@@ -15,9 +15,19 @@ document.addEventListener("transientStateChanged", event => {
     console.log("Transient state has changed. User has selected input. Regenerating HTML...")
     renderAllHTML()
 })
-// This eventListener is for when a user adds 1 ton to an existing colonyMineral object
+// This eventListener is for when a user adds 1 ton to an existing colonyMineral object (meaning: mineral already exist for specified colony)
+document.addEventListener("tonIncrease", event => {
+    console.log("Added 1 ton to colony's existing mineral inventory. Regenerating HTML...")
+    renderAllHTML()
+})
+// This eventListener is for when a user adds a new object ot the colonyMinerals array (meaning: mineral doesnt't already exist for specified colony)
+document.addEventListener("newMineralAdded", event => {
+    console.log("A new mineral was detected for this colony. Adding 1 ton. Regenerating HTML...")
+    renderAllHTML()
+})
+// This eventListener runs anytime the purchase Mineral button is clicked
 document.addEventListener("permanentStateChanged", event => {
-    console.log("Permanent state has changed. Added 1 ton of the mineral selected to the colony's inventory . Regenerating HTML...")
+    console.log("Permanent state has changed. Regenerating HTML...")
     renderAllHTML()
 })
 

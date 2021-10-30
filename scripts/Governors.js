@@ -2,6 +2,7 @@ import { getGovernors, getTransientState, setColony } from "./database.js";
 
 const governors = getGovernors()
 
+// The responsibility of this eventListener is to call the setColony() function whenever a governor is selected from the governor drop down (adds a colonyId property to the transientState object)
 document.addEventListener(
     "change",
     (changeEvent) => {
@@ -15,6 +16,8 @@ document.addEventListener(
         }
     }
 )
+
+// The responsibility of this function is to genrerate the html content for our governors array. The html content will be displayed as a dropdown with an option for each governor
 export const Governors = () => {
     const transientState = getTransientState()
     let html = ""
