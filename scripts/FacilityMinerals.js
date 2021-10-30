@@ -85,7 +85,7 @@ export const FacilityMinerals = () => {
     }
     // ELSE meaning no facility was selected...generate placeholder string
     else {
-        html += "Please select a facility from the drop down!!"
+        html += "Please select a facility from the drop down..."
     }
     // Finally, return the string of html that meets the first test it passes in the if else statements
     return html

@@ -25,7 +25,7 @@ export const SpaceCart = () => {
     }
     // ELSE (meaning a radio button has not been selected)
     else {
-        //RETURN A STRING (acts as a placeholder)
+        // RETURN A STRING OF HTML (acts as a placeholder)
         return `<div>
             Please choose a mineral from a facility...
         </div>`

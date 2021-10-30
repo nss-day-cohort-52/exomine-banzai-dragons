@@ -50,7 +50,7 @@ export const ColonyMinerals = () => {
     }
     // ELSE meaning no governor was selected...generate placeholder string
     else {
-        html += "Please select a governor to see available resources for a colony!!"
+        html += "Please select a governor to see available resources for a colony..."
     }
     // Finally, return the string of html that meets the first test it passes in the if else statements
     return html

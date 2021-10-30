@@ -244,11 +244,13 @@ export const purchaseMineral = () => {
             // RETURNS the first object that meets the conditions defined within the return statement // ELSE {RETURNS UNDEFINED}
             return facilityMineralObj.mineralId === newPurchase.mineralId && facilityMineralObj.facilityId === newPurchase.facilityId
         })
+    // This condition runs if the colony selected DOES already have an inventory of the mineral selected
     if (foundColonyMineralObj && newPurchase.colonyId) {
         foundColonyMineralObj.ton += 1
         foundFacilityMineralObj.ton -= 1
         document.dispatchEvent(new CustomEvent("tonIncrease"))
     }
+    // This condition runs if the colony selected DOES NOT already have an inventory of the mineral selected
     else if (newPurchase.colonyId && newPurchase.facilityId && newPurchase.mineralId) {
         const brandNewPurchase = {
             colonyId: newPurchase.colonyId,
@@ -261,16 +263,22 @@ export const purchaseMineral = () => {
         database.colonyMinerals.push(brandNewPurchase)
         document.dispatchEvent(new CustomEvent("newMineralAdded"))
     }
+    // This condition runs if a facility and mineral have been selected, but NOT a governor
     else if (newPurchase.facilityId && newPurchase.mineralId) {
         window.alert("Please select a Governor to purchase this mineral!🐱‍🚀")
     }
+    // This condition runs if a facility and governor have been selected, but NOT a mineral
     else if (newPurchase.facilityId && newPurchase.colonyId) {
         window.alert("You have not selected a mineral to purchase from the facility !🐱‍🚀")
     }
+    // This condition runs if a facility has NOT been selected yet
     else {
         window.alert("You have not selected a facility to purchase anything from 😮")
     }
-    delete database.transientState.mineralId
-    document.dispatchEvent(new CustomEvent("permanentStateChanged"))
 
+    // Deletes the mineralId from the object 
+    delete database.transientState.mineralId
+
+    // Disptaches a customEvent for the DOM to listen for
+    document.dispatchEvent(new CustomEvent("permanentStateChanged"))
 }

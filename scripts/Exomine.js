@@ -6,8 +6,7 @@ import { ColonyMinerals } from "./ColonyMinerals.js"
 import { SpaceCart } from "./cart.js"
 import { Colony } from "./Colonies.js"
 
-// const savedMinId = saveMineral()
-// This eventListner listens for when the user clicks the purchase button
+// This eventListener is responsible for calling the puchaseMineral() function IF the button with the id of "orderButton" is clicked
 document.addEventListener(
     "click",
     (event) => {
@@ -16,7 +15,7 @@ document.addEventListener(
         }
     }
 )
-// The resposibility of this function is to return a the html content for our webpage as a string 
+// The resposibility of this function is to return the html content for our webpage as a string 
 export const Exomine = () => {
     return `
     <i class="far fa-gem"></i>    

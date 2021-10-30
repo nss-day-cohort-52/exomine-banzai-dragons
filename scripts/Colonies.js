@@ -12,7 +12,8 @@ export const Colony = () => {
     )
     if (foundColony) {
         return `Available Resources for ${foundColony.colony}`
-    } else {
+    } 
+    else {
         return "Available Resources..."
     }
 

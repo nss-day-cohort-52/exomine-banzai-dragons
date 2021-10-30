@@ -28,7 +28,8 @@ export const Governors = () => {
     for (const governor of governors) {
         if (transientState.colonyId === governor.colonyId && governor.active === true) {
             html += `<option value="${governor.id}" selected>${governor.name}</option>`
-        } else if (governor.active === true) {
+        }
+        else if (governor.active === true) {
             html += `<option value="${governor.id}">${governor.name}</option>`
         }
     }
