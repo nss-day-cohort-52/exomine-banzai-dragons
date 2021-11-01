@@ -1,5 +1,5 @@
-# Exomine
-
+# Exomine (Banzai Dragons)
+ABOUT: 
 This web application lets governors purchase minerals for their colony one ton at a time from a facility they specify. The application also tracks the mineral inventory for each colony and facility in the database.
 
 THE DEVELOPMENT TEAM: Alex Lewis, Ashley Dickey, Laci Zeidler
