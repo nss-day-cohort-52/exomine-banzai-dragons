@@ -9,7 +9,7 @@ main.js - Responsible for rendering all of our HTML on page load as well as when
 
 Exomine.js - Responsible for declaring and exporting our Exomine() function that generates all of the HTML. It also listens for the purchase button click event
 
-Colonies.js - Responsible for declaring and exporting our Colony() function that generats the name of each colony on the page in a dynamic way
+Colonies.js - Responsible for declaring and exporting our Colony() function that generates the name of each colony on the page in a dynamic way
 
 Governors.js - Responsible for declaring and exporting our Governors() function. This function generates each object in the governors array from the database as HTML (drop down options). There is also a change eventListener that is responsible for calling our setColony() function when a governor is selected
 
