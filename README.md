@@ -1,6 +1,6 @@
 # Exomine
 
-This web application lets governors purchase minerals for their colony one ton at a time from a facility they specify. The application also tracks the mineral inventory for each colony in the database, as well as tracks the inventory of minerals for each facility.
+This web application lets governors purchase minerals for their colony one ton at a time from a facility they specify. The application also tracks the mineral inventory for each colony and facility in the database.
 
 MODULE RESPONSIBILITIES:
 (**Please see commented code within each module for a deeper understanding of each component**)
