@@ -6,22 +6,23 @@ MODULE RESPONSIBILITIES:
 (**Please see commented code within each module for a deeper understanding of each component**)
 
 main.js - Responsible for rendering all of our HTML on page load as well as when listening for customEvents that were dispatched during a state change
-
+---
 Exomine.js - Responsible for declaring and exporting our Exomine() function that generated all of the HTML. It also listened for the purchase button click event
-
+---
 Colonies.js - Responsible for declaring and exporting our Colony() function that generated the name of each colony on the page in a dynamic way
-
+---
 Governors.js - Responsible for declaring and exporting our Governors() function. This function generates each object in the governors array from the database as HTML (drop down options). There is also a change eventListener that is responsible for calling our setColony() function when a governor is selected
-
+---
 Facilities.js - Responsible for declaring and exporting our Facilities() function. This function generates each object in the facilities array from the database as HTML (drop down options). There is also a change eventListener that is responsible for calling our setFacility() function when a facility is selected
-
+---
 ColonyMinerals.js - Responsible for declaring and exporting our ColonyMinerals() function. This function generates the objects in the colonyMinerals array from the database as HTML in a dynamic way (HTML list items, dependent upon which governor is selected in the drop down)
-
+---
 FacilityMinerals.js - Responsible for declaring and exporting our FacilityMinerals() function. This function generates the objects in the facilityMinerals array from the database as HTML in a dynamic way (HTML radio buttons, dependent upon which facility is selected in the drop down). We also have an eventListener in here that calls the setMineral() function when the user selects a mineral from one of the radio buttons
-
+---
 cart.js - Responsible for declaring and exporting out SpaceCart() function. This function generates the mineral selected from a specific facility with the radio button as HTML (a string nested in a div. Ex. "1 ton of Plutonium from Red Hawk facility") 
-
-database.js - Responsible for storing all of our state (permanent and transient). We also have declared and exported our Get and Set functions within this module. The Get functions allow us to access copies of data throughout the other modules. The Set functions add key:value pairs to our transientState object when they are called. (i.e. when we recieve input from a user via a drop down or radio button). 
+---
+database.js - Responsible for storing all of our state (permanent and transient). We also have declared and exported our Get and Set functions within this module. The Get functions allow us to access copies of data throughout the other modules. The Set functions add key:value pairs to our transientState object when they are called. (i.e. when we recieve input from a user via a drop down or radio button). Lastly, we also declared and exported our purchaseMineral() function. This function is called during the purchase button click event (see the eventListener in Exomine.js). When called, the function will either add one ton to the existing colonyMineral object, or if a specific mineral does already exist for a specific colony, the function will add that new object to the colonyMinerals array with a ton property initialized with a value of 1.
+---
 
 ## Learning Objectives
 
