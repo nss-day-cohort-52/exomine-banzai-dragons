@@ -1,6 +1,27 @@
 # Exomine
 
-This project has you building an application that lets governors of different colonies in our Solar System purchase minerals from various mining facilities that human have established.
+This web application lets governors from different colonies purchase minerals for their colony one ton at a time from a facility they specify. The application also tracks the mineral inventory for each colony in the database, as well as tracks the inventory of minerals for each facility.
+
+MODULE RESPONSIBILITIES:
+(**Please see commented code within each module for a deeper understanding of each component**)
+
+main.js - Responsible for rendering all of our HTML on page load as well as when listening for customEvents that were dispatched during a state change
+
+Exomine.js - Responsible for declaring and exporting our Exomine() function that generated all of the HTML. It also listened for the purchase button click event
+
+Colonies.js - Responsible for declaring and exporting our Colony() function that generated the name of each colony on the page in a dynamic way
+
+Governors.js - Responsible for declaring and exporting our Governors() function. This function generates each object in the governors array from the database as HTML (drop down options). There is also a change eventListener that is responsible for calling our setColony() function when a governor is selected
+
+Facilities.js - Responsible for declaring and exporting our Facilities() function. This function generates each object in the facilities array from the database as HTML (drop down options). There is also a change eventListener that is responsible for calling our setFacility() function when a facility is selected
+
+ColonyMinerals.js - Responsible for declaring and exporting our ColonyMinerals() function. This function generates the objects in the colonyMinerals array from the database as HTML in a dynamic way (HTML list items, dependent upon which governor is selected in the drop down)
+
+FacilityMinerals.js - Responsible for declaring and exporting our FacilityMinerals() function. This function generates the objects in the facilityMinerals array from the database as HTML in a dynamic way (HTML radio buttons, dependent upon which facility is selected in the drop down). We also have an eventListener in here that calls the setMineral() function when the user selects a mineral from one of the radio buttons
+
+cart.js - Responsible for declaring and exporting out SpaceCart() function. This function generates the mineral selected from a specific facility with the radio button as HTML (a string nested in a div. Ex. "1 ton of Plutonium from Red Hawk facility") 
+
+database.js - Responsible for storing all of our state (permanent and transient). We also have declared and exported our Get and Set functions within this module. The Get functions allow us to access copies of data throughout the other modules. The Set functions add key:value pairs to our transientState object when they are called. (i.e. when we recieve input from a user via a drop down or radio button). 
 
 ## Learning Objectives
 
@@ -31,7 +52,7 @@ This animation shows you the basic behavior of the application.
 
 ## Data Relationships
 
-Below you can ready some basic information about the properties and relationships of the data you need for this application. There are several issue tickets created that tell you how the project should function. This project has been extensively planned by your project owner, and so you must build it to those specifications. Do not deviate from the definition of the features in the issue tickets.
+Below you can read some basic information about the properties and relationships of the data you need for this application. There are several issue tickets created that tell you how the project should function. This project has been extensively planned by your project owner, and so you must build it to those specifications. Do not deviate from the definition of the features in the issue tickets.
 
 If you need clarification about the functionality, please contact your product owner. You do not have the authority to change the intended functionality defined in the tickets.
 
