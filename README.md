@@ -7,7 +7,7 @@ MODULE RESPONSIBILITIES:
 
 main.js - Responsible for rendering all of our HTML on page load as well as when listening for customEvents that were dispatched during a state change
 
-Exomine.js - Responsible for declaring and exporting our Exomine() function that generated all of the HTML. It also listened for the purchase button click event
+Exomine.js - Responsible for declaring and exporting our Exomine() function that generates all of the HTML. It also listens for the purchase button click event
 
 Colonies.js - Responsible for declaring and exporting our Colony() function that generated the name of each colony on the page in a dynamic way
 
