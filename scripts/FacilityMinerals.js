@@ -43,11 +43,11 @@ const buildFacilityMineralsList = (facilityMineralObj) => {
         })
 
     // IF the mineral in the transientState object is equal to the mineral selected, render the selected radio button with a checked attribute. (if a radio button was selected, it will stay selected on render)
-    if (transientState.mineralId === foundMineral.id) {
+    if (transientState.mineralId === foundMineral.id && facilityMineralObj.ton > 0) {
         return `<li>
         <input type="radio" name="facilityMinerals" value="${facilityMineralObj.id}" checked="checked"/> ${facilityMineralObj.ton} tons of ${foundMineral.mineral} at ${foundFacility.facility}
         </li>`
-    } 
+    }
     // ELSE just render the buttons normally (none selected)
     else {
         return `<li>
@@ -70,7 +70,6 @@ export const FacilityMinerals = () => {
         const filiteredFacilityMineralArr = facilityMinerals.filter(facilityMineralObj => {
             return facilityMineralObj.facilityId === transientState.facilityId
         })
-
         html = "<ul>"
         /* STEPS FOR USING THE .map() ARRAY METHOD
         1. Add the .map() array method on the array you want to iterate through

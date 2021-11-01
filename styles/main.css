@@ -10,7 +10,7 @@ ul {
     padding-bottom: 3%;
 }
 body {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
 }
 #orderButton {
     background-color: #276678;

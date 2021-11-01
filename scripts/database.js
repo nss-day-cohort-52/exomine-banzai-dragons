@@ -149,7 +149,7 @@ const database = {
             id: 11,
             mineralId: 3,
             facilityId: 5,
-            ton: 8
+            ton: 2
         },
         {
             id: 12,
@@ -265,11 +265,15 @@ export const purchaseMineral = () => {
     }
     // This condition runs if a facility and mineral have been selected, but NOT a governor
     else if (newPurchase.facilityId && newPurchase.mineralId) {
-        window.alert("Please select a Governor to purchase this mineral!🐱‍🚀")
+        window.alert("Please select a Governor to purchase this mineral! 🐱‍🚀")
     }
     // This condition runs if a facility and governor have been selected, but NOT a mineral
     else if (newPurchase.facilityId && newPurchase.colonyId) {
-        window.alert("You have not selected a mineral to purchase from the facility !🐱‍🚀")
+        window.alert("You have not selected a mineral to purchase from the facility! 🐱‍🚀")
+    }
+    // This condition runs if ONLY a facility is selected
+    else if (newPurchase.facilityId) {
+        window.alert("You have not selected a Governor yet! 🐱‍🚀")
     }
     // This condition runs if a facility has NOT been selected yet
     else {
