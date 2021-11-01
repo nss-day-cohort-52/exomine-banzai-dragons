@@ -2,6 +2,8 @@
 
 This web application lets governors purchase minerals for their colony one ton at a time from a facility they specify. The application also tracks the mineral inventory for each colony and facility in the database.
 
+THE DEVELOPMENT TEAM: Alex Lewis, Ashley Dickey, Laci Zeidler
+
 MODULE RESPONSIBILITIES:
 (**Please see commented code within each module for a deeper understanding of each component**)
 
